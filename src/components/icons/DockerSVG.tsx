@@ -1,12 +1,17 @@
 import { useThemeUncontrolled } from '@/hooks'
 
-export const DockerSVG = () => {
+interface Props {
+    size?: string;
+}
+
+export const DockerSVG = ({ size = '40px' }: Props) => {
 
     const [, colorOne] = useThemeUncontrolled().colorsContrast
-    
+
     return (
         <svg
-            width="100%"
+            width={size}
+            height={size}
             fill={colorOne}
             viewBox="0 0 32 32"
             xmlns="http://www.w3.org/2000/svg"

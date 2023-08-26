@@ -1,12 +1,18 @@
 import { useThemeUncontrolled } from '@/hooks'
 
-export const NodejsSVG = () => {
-    const [ ,colorOne ] = useThemeUncontrolled().colorsContrast
+interface Props {
+    size?: string;
+}
+
+
+export const NodejsSVG = ({ size = '40px' }: Props) => {
+    const [, colorOne] = useThemeUncontrolled().colorsContrast
 
     return (
         <svg
-            width="100%"
-            fill={ colorOne }
+            width={size}
+            height={size}
+            fill={colorOne}
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"
             viewBox="0 0 512 512"

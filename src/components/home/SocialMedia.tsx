@@ -43,22 +43,21 @@ export const SocialMedia = () => {
         </TransitionElement>
       </Box>
 
-
       <Box>
         <TransitionElement isMounted={isMounted} classNames='faderight' timeout={2000}>
-        <Link
-          color="text"
-          href="mailto:Rafaelss427@gmail.com"
-          target='_blank'
-          rel="noreferrer noopener"
-          css={{
-            writingMode: "vertical-lr",
-            "@smMax": { display: "none" }
-          }}
+          <Link
+            color="text"
+            href="mailto:Rafaelss427@gmail.com"
+            target='_blank'
+            rel="noreferrer noopener"
+            css={{
+              writingMode: "vertical-lr",
+              "@smMax": { display: "none" }
+            }}
           >
-          Rafaelss427@gmail.com
-        </Link>
-          </TransitionElement>
+            Rafaelss427@gmail.com
+          </Link>
+        </TransitionElement>
       </Box>
     </Container>
   )

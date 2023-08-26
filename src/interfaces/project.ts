@@ -4,9 +4,10 @@ export type LinksType = {
     url: string
 }
 
-export interface Proyect {
+export interface Project {
     title: string;
     description: string;
+    src: string;
     technologies: string[];
     featured: boolean;
     linksType: LinksType[]

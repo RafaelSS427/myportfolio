@@ -1,4 +1,19 @@
-import { AspNetSVG, CsharpSVG, CssSVG, DockerSVG, FigmaSVG, GitSVG, HtmlSVG, JavascriptSVG, MySqlSVG, NextSVG, NodejsSVG, PrismaSVG, ReactSVG, TypescriptSVG } from "@/components";
+import { 
+    AspNetSVG, 
+    CsharpSVG, 
+    CssSVG, 
+    DockerSVG, 
+    FigmaSVG, 
+    GitSVG, 
+    HtmlSVG, 
+    JavascriptSVG, 
+    MySqlSVG, 
+    NextSVG, 
+    NodejsSVG, 
+    PrismaSVG, 
+    ReactSVG, 
+    TypescriptSVG 
+} from '@/components'
 
 export const config = {
     skills: {
@@ -62,5 +77,11 @@ export const config = {
                 logo: <AspNetSVG />
             },
         ]
-    }
+    },
+    socialMedia: {
+        linkedin: "https://www.linkedin.com/in/rafael-sequeira-sandoval",
+        github: "https://github.com/RafaelSS427",
+        frontentmentor: "https://www.frontendmentor.io/profile/RafaelSS427"
+    },
+    contact: "rafaelss427@gmail.com"
 }

@@ -1,7 +1,164 @@
 {
-    "presentation":"Soy",
-    "description": "Me gusta diseñar sitios web",
-    "contact": "¡Contáctame!",
+    "head": {
 
-    "projects": []
+    },
+    "navbar": {
+        "links": [
+            {
+                "label": "Proyectos",
+                "href": "projects"
+            },
+            {
+                "label": "Sobre mí",
+                "href": "about"
+            },
+            {
+                "label": "Contacto",
+                "href": "contact"
+            }
+          ]
+    },
+    "hero": {
+        "presentation":"Soy",
+        "description": "Una persona apasionada, responsable y perseverante, siempre en busca de nuevas oportunidades de aprendizaje y crecimiento. El esfuerzo y determinación son mis mayores fortalezas.",
+        "contact": "¡Contáctame!"
+    },
+    "about": {
+        "title": "Acerca de mí",
+        "subtitle": "Tecnologías que utilizo",
+        "items": [
+            {
+                "title": "¿Qué tipo de trabajo hago?",
+                "description": "Como apasionado desarrollador de sitios web, me identifico como full-stack que disfruta abordar todas las áreas relacionadas, desde el diseño hasta el backend y el frontend. Mi objetivo es crear experiencias digitales impactantes y funcionales que superen las expectativas de los usuarios objetivo."
+            },
+            {
+                "title": "¿Qué es lo que me apasiona y cuáles son las cosas que valoro?",
+                "description": "Me apasiona crear sitios web atractivos y funcionales que agreguen valor al usuario. Valoro el trabajo bien realizado y el esfuerzo que invierten las personas en un equipo de trabajo."
+            },
+            {
+                "title": "¿Qué tipo de cultura de trabajo busco?",
+                "description": "Busco un lugar en donde pueda crecer profesionalmente y mejorar mis habilidades de programación y diseño. Me encantaría trabajar en un equipo donde se apoyen mutuamente para lograr el mejor resultado posible en un determinado trabajo."
+            },
+            {
+                "title": "¿Qué hago actualmente?",
+                "description": "Actualmente me desempeño como desarrollador freelancer trabajando en varios proyectos. Considero que es una buena forma de mejorar mis habilidades mientras busco mejores oportunidades de trabajo."
+            },
+            {
+                "title": "Mi educación y certificaciones académicas",
+                "description": "Cuento con un título de Bachiller en Informática Empresarial impartido por la Universidad de Costa Rica, certificado de Diseño UX impartido por google y una insignia de Agile Explorer impartida por IBM SkillsBuild además de contar con varios certificados de Udemy que me han permitido mejorar habilidades específicas de programación."
+            }
+        ]
+    },
+    "projects": {
+        "title": "Proyectos",
+        "detail": "Proyecto destacado",
+        "subtitle": "Otros proyectos",
+        "featured": [
+            {
+                "title": "Sala de Belleza y Academia Eleganzza",
+                "description": "El sitio web ha sido creado con el propósito de brindar información detallada sobre los cursos y servicios ofrecidos por la academia. Fue creado utilizando Next.js, incorporando autenticación y un sistema administrativo.",
+                "src": "/img/academia-eleganzza.webp",
+                "state": true,
+                "technologies": [
+                    "Nextjs",
+                    "Material-UI",
+                    "Typescript",
+                    "Prisma",
+                    "API-Graph-Facebook",
+                    "MySQL",
+                    "Mapbox"
+                ],
+                "linksType": [
+                    {
+                        "name": "browser",
+                        "url": "https://academia-eleganzza.com/"
+                    }
+                ]
+            },
+            {
+                "title": "La Flor de Playa Negra",
+                "description": "El sitio web tiene como objetivo brindar información de cabañas para su posterior alquiler. Incorpora una landing page y páginas para cada cabaña con su respectiva información. Fue creado utilizando Next.js, incorporando autenticación y un sistema administrativo.",
+                "src": "/img/academia-eleganzza.webp",
+                "state": true,
+                "technologies": [
+                    "Nextjs",
+                    "Material-UI",
+                    "Typescript",
+                    "Mapbox",
+                    "Google-Forms-API",
+                    "Paypal",
+                    "MySQL",
+                    "i18n"
+                ],
+                "linksType": [
+                    {
+                        "name": "browser",
+                        "url": "https://laflordeplayanegra.com/"
+                    }
+                ]
+            },
+            {
+                "title": "FutsalaSC",
+                "description": "FutsalaSC es una iniciativa estudiantil, el objetivo de la página es compartir noticias relacionadas al deporte. Cuenta con un sistema administrativo para crear, actualizar y borrar noticias.",
+                "src": "/img/academia-eleganzza.webp",
+                "state": true,
+                "technologies": [
+                    "Nextjs",
+                    "Material-UI",
+                    "Typescript"
+                ],
+                "linksType": [
+                    {
+                        "name": "github",
+                        "url": ""
+                    },
+                    {
+                        "name": "browser",
+                        "url": ""
+                    }
+                ]
+            }
+        ],
+        "secondary": [
+            {   
+                "title": "OMI-CECAMM",
+                "description": "Maquetado de web que permite visualizar información de cursos",
+                "src": "/img/academia-eleganzza.webp",
+                "state": false,
+                "technologies": [
+                    "React",
+                    "SASS",
+                    "JS",
+                    "i18n"
+                ],
+                "linksType": [
+                    {
+                        "name": "github",
+                        "url": ""
+                    },
+                    {
+                        "name": "browser",
+                        "url": ""
+                    }
+                ]
+            }
+        ]
+    },
+    "contact": {
+        "title": "Contáctame",
+        "description": "¡Sientete en la libertad de contactarme en cualquier momento, mi computadora y yo estaremos encantados en responderte! :D",
+        "ui": {
+            "contactAction": "¡Contáctame!"
+        }
+    },
+    "footer": {
+        "caption1": "Hecho con",
+        "caption2": "Diseño inspirado en el portafolio de <0>Brittany</0> Chiang y la página de <1>Vercel</1>"
+    },
+    "ui": {
+        "show": {
+            "more": "Ver más",
+            "less": "Ver menos"
+        }
+    }
 }

@@ -1,60 +1,84 @@
-import { Navbar, Link, Text, Dropdown } from '@nextui-org/react'
-import NextLink from 'next/link'
+import { Key, createRef, useEffect, useMemo } from 'react'
+import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
+import { Navbar, Link, Text, Dropdown, Button } from '@nextui-org/react'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown, faGlobe } from '@fortawesome/free-solid-svg-icons'
 
-import { Box, TransitionElement } from '../shared';
-import { LogoApp, SwitchApp } from './';
-import { useIsMounted, useThemeUncontrolled } from '@/hooks';
-import { Key, LegacyRef, createRef, useMemo, useRef } from 'react';
-import { capitalize } from '@/utils';
-import { useRouter } from 'next/router';
+import { Box, TransitionElement } from '../shared'
+import { LogoApp, SwitchApp } from './'
+import { useIsMounted, useThemeUncontrolled } from '@/hooks'
+import { useBookStore } from '@/store'
 
-// This going on of the file configuration
-const collapseItems = [
-  "Features",
-  "Customers",
-  "Pricing",
-  "Company",
-  "Legal",
-  "Team",
-  "Help & Feedback",
-  "Login",
-  "Sign Up",
-];
+type LinksNavbar = {
+  label: string,
+  href: string
+}
 
-// and this too
-const mainLinks = [
-  "about",
-  "projects",
-  "contact"
-]
+interface PropsToggle  {
+  isOpen: boolean;
+  setIsOpen: (value:boolean) => void;
+}
+
+const ToogleApp = ({ isOpen, setIsOpen }: PropsToggle) => {
+  return (
+    <Navbar.Toggle
+      isSelected={isOpen}
+      aria-label="toggle navigation"
+      onChange={() => setIsOpen(!isOpen)}
+      css={{
+        mr: '10px',
+        '@xs': { display: 'none' },
+      }}
+    />
+  )
+}
 
 export const NavbarApp = () => {
   const router = useRouter()
+  const isOpenMenuMobile = useBookStore(store => store.isOpenMenuMobile)
+  const setIsOpenMenuMobile = useBookStore(store => store.setIsOpenMenuMobile)
+
+  const { t } = useTranslation('home')
 
   const { controlledStyles } = useThemeUncontrolled()
 
   const { isMounted } = useIsMounted(100)
-  
+
   const getLocale = useMemo(() => router.locale === 'en' ? '' : 'es', [router.locale])
 
   const onActionMenu = (e: Key) => {
     router.push('/', undefined, { locale: e.toString(), scroll: false })
   }
 
+  const links: LinksNavbar[] = t('navbar.links', { returnObjects: true })
+
+  const handleLinkMobile = (href: string) => {
+    document.body.style.overflow = 'initial';
+    setIsOpenMenuMobile(false)
+    router.push(`/${getLocale}#${href}`, undefined, { scroll: false })
+  }
+
+  // useEffect(() => {
+  //   document.body.style.overflow = isOpenMenuMobile ? 'hidden' : 'scroll';
+  // }, [isOpenMenuMobile])
+
   return (
-    <Navbar shouldHideOnScroll disableShadow maxWidth="fluid" variant="static">
+    // <Navbar shouldHideOnScroll disableShadow maxWidth="fluid" variant="static">
+    <Navbar disableShadow disableScrollHandler maxWidth="fluid" variant="floating">
       <Navbar.Brand>
-        <Navbar.Toggle
+        <ToogleApp isOpen={isOpenMenuMobile} setIsOpen={setIsOpenMenuMobile} />
+        {/* <Navbar.Toggle
+          isSelected={isOpenMenuMobile}
           aria-label="toggle navigation"
+          onChange={() => setIsOpenMenuMobile(!isOpenMenuMobile)}
           css={{
             mr: '10px',
             '@xs': { display: 'none' },
           }}
-        />
+        /> */}
         <TransitionElement isMounted={isMounted} classNames="fadeleft" timeout={2000}>
           <LogoApp width="60px" height="60px" />
         </TransitionElement>
@@ -63,12 +87,12 @@ export const NavbarApp = () => {
         <TransitionGroup component={null}>
           {
             isMounted &&
-            mainLinks.map((linkName, i) => {
+            links.map(({ label, href }, i) => {
               const nodeRef = createRef<any>()
               return (
-                <CSSTransition classNames="fadedown" timeout={2000} key={`${linkName}-${i}`} nodeRef={nodeRef}>
-                  <Navbar.Link key={`${linkName}-${i * 2}`} href={`/${getLocale}#${linkName}`} style={{ transitionDelay: `${i * 100}ms` }} ref={nodeRef}>
-                    <Text css={{ textGradient: "45deg, #02AABD -20%, #00CDAC 50%", mr: 4 }} weight="bold">0{i + 1}.</Text>{capitalize(linkName)}
+                <CSSTransition classNames="fadedown" timeout={2000} key={`${label}-${i}`} nodeRef={nodeRef}>
+                  <Navbar.Link href={`/${getLocale}#${href}`} style={{ transitionDelay: `${i * 100}ms` }} ref={nodeRef}>
+                    <Text css={{ textGradient: "45deg, #02AABD -20%, #00CDAC 50%", mr: 4 }} weight="bold">0{i + 1}.</Text> {label}
                   </Navbar.Link>
                 </CSSTransition>
               )
@@ -99,7 +123,7 @@ export const NavbarApp = () => {
                   gap: "10px"
                 }}>
                   <FontAwesomeIcon icon={faGlobe} size="lg" style={controlledStyles} />
-                  <Text css={{ textDecorationLine: "underline" }}>{ router.locale === "en" ? "English" : "Español" }</Text>
+                  <Text css={{ textDecorationLine: "underline" }}>{router.locale === "en" ? "English" : "Español"}</Text>
                 </Box>
               </Dropdown.Button>
 
@@ -142,18 +166,21 @@ export const NavbarApp = () => {
 
       </TransitionElement>
 
-      <Navbar.Collapse>
-        {collapseItems.map((item, index) => (
-          <Navbar.CollapseItem key={item}>
-            <Link
+      <Navbar.Collapse isOpen={isOpenMenuMobile} >
+        {links.map(({ label, href }, index) => (
+          <Navbar.CollapseItem key={label + index}>
+            <Button onPress={() => handleLinkMobile(href)} auto light ripple={false} animated={false}>
+              {label}
+            </Button>
+            {/* <Link
               color="inherit"
               css={{
                 minWidth: "100%",
               }}
-              href="#"
+              href={`/${getLocale}#${href}`}
             >
-              {item}
-            </Link>
+              {label}
+            </Link> */}
           </Navbar.CollapseItem>
         ))}
       </Navbar.Collapse>

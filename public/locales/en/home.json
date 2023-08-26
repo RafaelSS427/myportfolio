@@ -1,56 +1,141 @@
 {
-    "presentation":"I'm",
-    "description": "I like to design web sites",
-    "contact": "Contact me!",
+    "head": {
 
-    "projects": [
-        {
-            "title": "Sala de Belleza y Academia Eleganzza",
-            "description": "La página web ha sido creada con el propósito de brindar información detallada sobre los servicios y cursos ofrecidos por la academia. Su objetivo es permitir a la academia tener una sólida presencia en internet y alcanzar a un público más amplio. Cuenta con un sistema administrativo para manipular el contenido más importante.",
-            "technologies": ["Nextjs", "Material-UI", "Typescript", "Prisma"],
-            "featured": true,
-            "linksType": [
-                {
-                    "name": "github",
-                    "url": ""
-                },
-                {
-                    "name": "browser",
-                    "url": ""
-                }
-            ]
-        },
-        {
-            "title": "FutsalaSC",
-            "description": "FutsalaSC es una iniciativa estudiantil, el objetivo de la página es compartir noticias relacionadas al deporte. Cuenta con un sistema administrativo para crear, actualizar o borrar las noticias",
-            "technologies": ["Nextjs", "Material-UI", "Typescript"],
-            "featured": true,
-            "linksType": [
-                {
-                    "name": "github",
-                    "url": ""
-                },
-                {
-                    "name": "browser",
-                    "url": ""
-                }
-            ]
-        },
-        {
-            "title": "Sala de Belleza y Academia Eleganzza",
-            "description": "Esta description está en proceso",
-            "technologies": ["React", "SASS", "JS"],
-            "featured": true,
-            "linksType": [
-                {
-                    "name": "github",
-                    "url": ""
-                },
-                {
-                    "name": "browser",
-                    "url": ""
-                }
-            ]
+    },
+    "navbar": {
+        "links": [
+            {
+                "label": "Projects",
+                "href": "projects"
+            },
+            {
+                "label": "About",
+                "href": "about"
+            },
+            {
+                "label": "Contact",
+                "href": "contact"
+            }
+          ]
+    },
+    "hero": {
+        "presentation": "I'm",
+        "description": "A passionate, responsible, and persevering individual, always in pursuit of new learning and growth oportunities. Effort and determination are my greatest strengths.",
+        "contact": "Contact me!"
+    },
+    "about": {
+        "title": "About me",
+        "subtitle": "Technologies I use",
+        "items": [
+            {
+                "title": "What type of work do I do?",
+                "description": "As a passionate website developer, I identify as a full-stack enthusiast who enjoys tackling all related areas, from design to backend aand frontend. My goal is to create impactful and funcional digital experiences that exceed the expectations of the target users."
+            },
+            {
+                "title": "What I am passionate about and what are the things I value?",
+                "description": "I am passionate to create appealing and funcional websites that add value to the user. I value well-done work and the effort that people invest in a team."
+            },
+            {
+                "title": "What type of work culture am I looking for?",
+                "description": "I am looking for a place where I can grow professionally and enhance my programming and design skills. I would love to work in a team where there is mutual support to achieve the best possible outcome in any given task."
+            },
+            {
+                "title": "What am I currently doing?",
+                "description": "Currently, I work as freelance developer on various projects. I believe this is a great way to enhance my skills while seeking better job opportunities."
+            },
+            {
+                "title": "My education and academic certitifications",
+                "description": "I hold a Bachelor's degree in Business Informatics from the University of Costa Rica, a UX Design certificate from Google, and an Agile Explorer badge from IBM SkillsBuild. Additionally, I have several certificates from Udemy that have allowed me to enhance specific programming skills."
+            }
+        ]
+    },
+    "projects": {
+        "title": "Projects",
+        "detail": "Featured project",
+        "subtitle": "Other projects",
+        "state": true,
+        "featured": [
+            {
+                "title": "Sala de Belleza y Academia Eleganzza",
+                "description": "The website has been created with the purpose of providing detailed information about the courses and services offered by the academy. It was build using Next.js, incorporating authentication and an administrative system.",
+                "src": "/img/academia-eleganzza.webp",
+                "state": true,
+                "technologies": [
+                    "Nextjs",
+                    "Material-UI",
+                    "Typescript",
+                    "Prisma",
+                    "API-Graph-Facebook",
+                    "MySQL",
+                    "Mapbox"
+                ],
+                "linksType": [
+                    {
+                        "name": "browser",
+                        "url": "https://academia-eleganzza.com/"
+                    }
+                ]
+            },
+            {
+                "title": "La Flor de Playa Negra",
+                "description": "The website aims to privide information about cabins for future rentals. It includes a landing page and individual pages for each cabin with their respective information. It was build using Next.js, incorporating authentication and an administrative system.",
+                "src": "/img/academia-eleganzza.webp",
+                "state": true,
+                "technologies": [
+                    "Nextjs",
+                    "Material-UI",
+                    "Typescript",
+                    "Mapbox",
+                    "Google-Forms-API",
+                    "Paypal",
+                    "MySQL",
+                    "i18n"
+                ],
+                "linksType": [
+                    {
+                        "name": "browser",
+                        "url": "https://laflordeplayanegra.com/"
+                    }
+                ]
+            },
+            {
+                "title": "FutsalaSC",
+                "description": "FutsalaSC is a student initiative, the purpose of the website is to share news related to sports. It features an administrative system for creating, updating, and deleting news.",
+                "src": "/img/academia-eleganzza.webp",
+                "state": false,
+                "technologies": [
+                    "Nextjs",
+                    "Material-UI",
+                    "Typescript"
+                ],
+                "linksType": [
+                    {
+                        "name": "github",
+                        "url": ""
+                    },
+                    {
+                        "name": "browser",
+                        "url": ""
+                    }
+                ]
+            }
+        ]
+    },
+    "contact": {
+        "title": "Contact me",
+        "description": "Feel free to contact me anytime, my computer and I will be happy to respond to you! :D",
+        "ui": {
+            "contactAction": "Contact me!"
         }
-    ]
+    },
+    "footer": {
+        "caption1": "Made with",
+        "caption2": "Design inspired by <0>Brittany Chiang's</0> portfolio and the <1>Vercel</1> website."
+    },
+    "ui": {
+        "show": {
+            "more": "Show more",
+            "less": "Show less"
+        }
+    }
 }

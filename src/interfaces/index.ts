@@ -1,1 +1,2 @@
-export * from './proyect'
+export * from './project'
+export * from './home'

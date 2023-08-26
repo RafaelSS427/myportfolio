@@ -3,6 +3,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { MainLayout } from '@/components/layout'
 import { About, Hero, Projects } from '@/screens'
 import { Box } from '@/components'
+import { Contact } from '@/screens/contact'
 
 // TODO: Remove the package called "@fortawesome/free-regular-svg-icons" if it has not been used
 // TODO: Begin to add animations
@@ -11,8 +12,9 @@ const HomePage:NextPage = () => {
     <MainLayout>
       <Hero />
       <Box css={{ height: "76px" }} />
-      <About />
       <Projects />
+      <About />
+      <Contact />
     </MainLayout>
   )
 }

@@ -11,7 +11,7 @@ export const Description:FC<Props> = ({ text, textAlign = "start", size = 20 }) 
     // Lorem ipsum dolor sit amet consectetur. Mattis sapien amet augue vulputate massa adipiscing facilisis aenean semper. Neque facilisis fames rutrum a. Massa arcu urna ultricies velit orci auctor diam.
     <Text size={size} css={{
         mb: size !== 20 ? 0 : 30,
-        letterSpacing: "$wide",
+        letterSpacing: "$tight",
         textAlign: textAlign,
         "@xsMax": {
             fontSize: 16

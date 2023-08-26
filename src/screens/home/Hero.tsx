@@ -1,10 +1,8 @@
 import { createRef } from 'react'
-import { useTheme, Button, Text } from '@nextui-org/react'
+import { useTheme, Text } from '@nextui-org/react'
 import { useTranslation } from 'next-i18next'
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import { Box, Description } from '@/components'
+import { Box, ButtonContact, Description } from '@/components'
 import { TextName } from '@/components/home'
 import { useIsMounted } from '@/hooks'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
@@ -28,7 +26,7 @@ const Position = () => (
             }
         }}
     >
-        Junior Full-Stack Developer
+        Full-Stack Developer
     </Text>
 )
 
@@ -57,19 +55,6 @@ const FullName = ({ isDark }: { isDark?: boolean }) => (
     </Box>
 )
 
-const ButtonContact = ({ text }: ChildrenProps) => (
-    // Contact me
-    <Button
-        shadow
-        color="primary"
-        auto
-        icon={<FontAwesomeIcon icon={faEnvelope} />}
-    >
-        { text }
-    </Button>
-)
-
-
 export const Hero = () => {
     const { isDark } = useTheme()
     const { isMounted } = useIsMounted(1000)
@@ -85,7 +70,7 @@ export const Hero = () => {
                 <TransitionGroup component={null}>
                     {
                         isMounted && (
-                            [<Position />, <Im text={ t('presentation') } />, <FullName isDark={isDark} />, <Description text={ t('description') } />, <ButtonContact text={ t('contact') }/>].map((element, i) => {
+                            [<Position />, <Im text={ t('hero.presentation') } />, <FullName isDark={isDark} />, <Description text={ t('hero.description') } />, <ButtonContact text={ t('hero.contact') }/>].map((element, i) => {
                                 const node = createRef<any>()
 
                                 return (

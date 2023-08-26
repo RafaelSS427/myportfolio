@@ -1,12 +1,17 @@
 import { useThemeUncontrolled } from '@/hooks'
 
-export const MySqlSVG = () => {
+interface Props {
+    size?: string;
+}
+
+export const MySqlSVG = ({ size = '60px' }: Props) => {
 
     const [, colorOne] = useThemeUncontrolled().colorsContrast
 
     return (
         <svg
-            width="100%"
+            width={size}
+            height={size}
             fill={colorOne}
             viewBox="0 0 32 32"
             xmlns="http://www.w3.org/2000/svg"
