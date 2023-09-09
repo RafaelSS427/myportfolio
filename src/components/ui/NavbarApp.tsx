@@ -34,15 +34,6 @@ export const NavbarApp = () => {
 
   const links: LinksNavbar[] = useMemo(() => t('navbar.links', { returnObjects: true }), [t])
 
-  const handleLinkMobile = (href: string) => {
-    // setIsMenuOpen(false)
-    router.push(`/${getLocale}#${href}`, undefined, { scroll: false })
-  }
-
-  // useEffect(() => {
-
-  // }, [isMenuOpen])
-
   return (
     <Navbar
       isMenuOpen={isMenuOpen}
@@ -54,10 +45,6 @@ export const NavbarApp = () => {
         <NavbarMenuToggle
           className="sm:hidden"
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          // isSelected={isMenuOpen}
-          // onChange={(e) => {
-          //   setIsMenuOpen(e)
-          // }}
         />
         <NavbarBrand>
           <TransitionElement isMounted={isMounted} classNames="fadeleft" timeout={2000}>
