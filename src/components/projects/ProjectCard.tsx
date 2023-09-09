@@ -1,6 +1,6 @@
 import { FC, useCallback } from 'react'
 import { useTranslation } from 'next-i18next'
-import { Image, Link, Chip } from '@nextui-org/react'
+import { Link, Chip } from '@nextui-org/react'
 import { GitHubSVG, OpenSVG } from '../icons'
 import { Description } from '../shared'
 import { Project } from '@/interfaces'
@@ -28,10 +28,10 @@ export const ProjectCard: FC<Props> = ({ direction = "row", project }) => {
                 <div className="flex justify-center items-center h-full">
                     <div className={`w-full bg-transparent sm:w-[80%]`}>
                         <Link href={getUrlImage()} isExternal>
-                            <Image
+                            <img
                                 src={src}
                                 width="100%"
-                                alt="Example project"
+                                alt={`${title} - Image`}
                                 style={{ objectFit: "contain" }}
                             />
                         </Link>
