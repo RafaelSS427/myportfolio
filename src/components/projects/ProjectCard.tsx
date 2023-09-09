@@ -1,10 +1,9 @@
 import { FC, useCallback } from 'react'
 import { useTranslation } from 'next-i18next'
-import { Link, Chip } from '@nextui-org/react'
+import { Link, Chip, Image } from '@nextui-org/react'
 import { GitHubSVG, OpenSVG } from '../icons'
 import { Description } from '../shared'
 import { Project } from '@/interfaces'
-
 interface Props {
     project: Project
     direction?: "row-reverse" | "row"
@@ -28,7 +27,7 @@ export const ProjectCard: FC<Props> = ({ direction = "row", project }) => {
                 <div className="flex justify-center items-center h-full">
                     <div className={`w-full bg-transparent sm:w-[80%]`}>
                         <Link href={getUrlImage()} isExternal>
-                            <img
+                            <Image
                                 src={src}
                                 width="100%"
                                 alt={`${title} - Image`}
@@ -54,7 +53,7 @@ export const ProjectCard: FC<Props> = ({ direction = "row", project }) => {
                             {title}
                         </h4>
 
-                        <div className="w-full" style={{ display: !state ? "flex" : "none" }}>
+                        <div className="w-full justify-end sm:justify-start" style={{ display: !state ? "flex" : "none" }}>
                             <Chip color="success" variant="dot">{ t('projects.textState') }</Chip>
                         </div>
                     </div>

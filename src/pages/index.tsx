@@ -11,7 +11,7 @@ const HomePage: NextPage = () => {
   return (
     <MainLayout title="Rafael Sequeira Sandoval | Full Stack Developer" description={ t('hero.description') }>
       <Hero />
-      <div className="h-[80px]" />
+      <div className="h-[calc(80px*2)]" />
       <Projects />
       <About />
       <Contact />

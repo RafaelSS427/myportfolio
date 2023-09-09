@@ -1,4 +1,4 @@
-import { Key, createRef, useMemo, useState } from 'react'
+import { Key, createRef, useEffect, useMemo, useState } from 'react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { Navbar, Dropdown, Button, NavbarContent, Link, NavbarBrand, NavbarItem, NavbarMenu, NavbarMenuItem, NavbarMenuToggle, DropdownTrigger, DropdownItem, DropdownMenu } from '@nextui-org/react'
@@ -35,9 +35,13 @@ export const NavbarApp = () => {
   const links: LinksNavbar[] = useMemo(() => t('navbar.links', { returnObjects: true }), [t])
 
   const handleLinkMobile = (href: string) => {
-    setIsMenuOpen(false)
+    // setIsMenuOpen(false)
     router.push(`/${getLocale}#${href}`, undefined, { scroll: false })
   }
+
+  // useEffect(() => {
+
+  // }, [isMenuOpen])
 
   return (
     <Navbar
@@ -47,7 +51,14 @@ export const NavbarApp = () => {
       className="py-2"
     >
       <NavbarContent justify="start">
-        <NavbarMenuToggle className="sm:hidden" aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
+        <NavbarMenuToggle
+          className="sm:hidden"
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          // isSelected={isMenuOpen}
+          // onChange={(e) => {
+          //   setIsMenuOpen(e)
+          // }}
+        />
         <NavbarBrand>
           <TransitionElement isMounted={isMounted} classNames="fadeleft" timeout={2000}>
             <LogoApp width="60px" height="60px" />
@@ -93,8 +104,8 @@ export const NavbarApp = () => {
                 </Button>
               </DropdownTrigger>
               <DropdownMenu aria-label="Static Actions" onAction={onActionMenu}>
-                <DropdownItem key="es">{ t('navbar.dropdown.textEs') }</DropdownItem>
-                <DropdownItem key="en">{ t('navbar.dropdown.textEn') }</DropdownItem>
+                <DropdownItem key="es">{t('navbar.dropdown.textEs')}</DropdownItem>
+                <DropdownItem key="en">{t('navbar.dropdown.textEn')}</DropdownItem>
               </DropdownMenu>
             </Dropdown>
           </TransitionElement>
@@ -110,8 +121,11 @@ export const NavbarApp = () => {
 
       <NavbarMenu className="mt-4">
         {links.map(({ label, href }, index) => (
-          <NavbarMenuItem onClick={() => handleLinkMobile(href)} key={`${label}-${index}`}>
-            <p className="text-primary">{label}</p>
+          <NavbarMenuItem key={`${label}-${index}`}>
+            <Link href={`/${getLocale}#${href}`} onClick={() => setIsMenuOpen(false)}>
+              {label}
+            </Link>
+            {/* <p className="text-primary">{label}</p> */}
           </NavbarMenuItem>
         ))}
       </NavbarMenu>
