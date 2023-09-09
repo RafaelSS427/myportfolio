@@ -1,24 +1,21 @@
-import { GetStaticProps, NextPage } from 'next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-// import { MainLayout } from '@/components/layout'
-// import { About, Hero, Projects } from '@/screens'
-// import { Box } from '@/components'
-// import { Contact } from '@/screens/contact'
 
-// TODO: Remove the package called "@fortawesome/free-regular-svg-icons" if it has not been used
-// TODO: Begin to add animations
-const HomePage:NextPage = () => {
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { MainLayout } from '@/components/layout'
+import { About, Contact, Hero, Projects } from '@/screens'
+import { useTranslation } from 'next-i18next'
+
+const HomePage: NextPage = () => {
+  const { t } = useTranslation('home')
+
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-    // <MainLayout>
-    //   <Hero />
-    //   <Box css={{ height: "76px" }} />
-    //   <Projects />
-    //   <About />
-    //   <Contact />
-    // </MainLayout>
+    <MainLayout title="Rafael Sequeira Sandoval | Full Stack Developer" description={ t('hero.description') }>
+      <Hero />
+      <div className="h-[80px]" />
+      <Projects />
+      <About />
+      <Contact />
+    </MainLayout>
   )
 }
 

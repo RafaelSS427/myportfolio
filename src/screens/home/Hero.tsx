@@ -1,8 +1,8 @@
 import { createRef } from 'react'
-import { useTheme, Text } from '@nextui-org/react'
+// import { useTheme, Text } from '@nextui-org/react'
 import { useTranslation } from 'next-i18next'
 
-import { Box, ButtonContact, Description } from '@/components'
+import { ButtonContact, ButtonDownload } from '@/components'
 import { TextName } from '@/components/home'
 import { useIsMounted } from '@/hooks'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
@@ -12,72 +12,60 @@ interface ChildrenProps {
 }
 
 const Position = () => (
-    <Text
-        h1
-        size={64}
-        css={{
-            textGradient: "45deg, #02AABD -20%, #00CDAC 50%",
-            fontWeight: "$semibold",
-            letterSpacing: "$tighter",
-            // textShadow: "1px 1px 30px rgba(2, 170, 189, 0.30)",
-            "@xsMax": {
-                lineHeight: "50px",
-                fontSize: 40
-            }
-        }}
-    >
-        Full-Stack Developer
-    </Text>
+    <h1 className="text-4xl text-gradient md:text-6xl md:leading-[1.5em] tracking-tighter font-semibold mb-3">
+        Full Stack Developer
+    </h1>
 )
 
 const Im = ({ text }: ChildrenProps) => (
-    // I'm
-    <Text css={{
-        letterSpacing: "$wide",
-        "@xsMax": {
-            mt: 4
-        }
-    }}>
-        { text }
-    </Text>
+    <p className="mt-1 md:mt-0 tracking-wide">
+        {text}
+    </p>
 )
 
-const FullName = ({ isDark }: { isDark?: boolean }) => (
-    <Box css={{
-        display: 'flex',
-        columnGap: "10px",
-        flexWrap: "wrap",
-        marginBottom: "10px"
-    }}>
-        <TextName isDark={isDark} text='Rafael' />
-        <TextName isDark={isDark} text='Sequeira' />
-        <TextName isDark={isDark} text='Sandoval' />
-    </Box>
+const Description = ({ text }: ChildrenProps) => (
+    <p className="text-base mb-5 tracking-tight sm:text-xl">
+        {text}
+    </p>
 )
+
+const FullName = () => {
+    return (
+        <div className="flex gap-x-2.5 flex-wrap mb-2.5" >
+            <TextName text='Rafael' />
+            <TextName text='Sequeira' />
+            <TextName text='Sandoval' />
+        </div>
+    )
+}
 
 export const Hero = () => {
-    const { isDark } = useTheme()
     const { isMounted } = useIsMounted(1000)
     const { t } = useTranslation('home')
 
     return (
-        <Box css={{
-            height: "calc(100vh - 76px * 2)",
-            display: "flex",
-            alignItems: "center"
-        }}>
-            <Box css={{ display: isMounted ? "block" : "none" }}>
+        <div className="h-[calc(100vh-80px*2)] flex items-center">
+            <div style={{ display: isMounted ? "block" : "none" }}>
                 <TransitionGroup component={null}>
                     {
                         isMounted && (
-                            [<Position />, <Im text={ t('hero.presentation') } />, <FullName isDark={isDark} />, <Description text={ t('hero.description') } />, <ButtonContact text={ t('hero.contact') }/>].map((element, i) => {
+                            [
+                                <Position key="position" />,
+                                <Im key="i-am" text={t('hero.presentation')} />,
+                                <FullName key="fullname" />,
+                                <Description key="description" text={t('hero.description')} />,
+                                <div key="buttons" className="flex gap-2">
+                                    <ButtonContact text={t('hero.contact')} />
+                                    <ButtonDownload text={t('hero.cv')} />
+                                </div>
+                            ].map((element, i) => {
                                 const node = createRef<any>()
 
                                 return (
                                     <CSSTransition key={i} classNames="fadedown" timeout={2000} nodeRef={node}>
-                                        <Box style={{ transitionDelay: `${i * 100}ms` }} ref={node}>
+                                        <div style={{ transitionDelay: `${i * 100}ms` }} ref={node}>
                                             {element}
-                                        </Box>
+                                        </div>
                                     </CSSTransition>
 
                                 )
@@ -85,61 +73,7 @@ export const Hero = () => {
                         )
                     }
                 </TransitionGroup>
-                {/* <Text
-                    h1
-                    size={64}
-                    css={{
-                        textGradient: "45deg, #02AABD -20%, #00CDAC 50%",
-                        fontWeight: "$semibold",
-                        letterSpacing: "$tighter",
-                        "@xsMax": {
-                            lineHeight: "50px",
-                            fontSize: 40
-                        }
-                    }}
-                >
-                    Junior Full-Stack Developer
-                </Text> */}
-
-
-                {/* <Text css={{
-                    letterSpacing: "$wide",
-                    "@xsMax": {
-                        mt: 4
-                    }
-                }}>
-                    I'm
-                </Text> */}
-
-                {/* <Box css={{
-                    display: 'flex',
-                    columnGap: "10px",
-                    flexWrap: "wrap",
-                    marginBottom: "10px"
-                }}>
-                    <TextName isDark={isDark} text='Rafael' />
-                    <TextName isDark={isDark} text='Sequeira' />
-                    <TextName isDark={isDark} text='Sandoval' />
-                </Box> */}
-
-                {/* <Text size={20} css={{
-                    mb: 30,
-                    letterSpacing: "$wide",
-                    "@xsMax": {
-                        fontSize: 16
-                    }
-                }}>
-                    Lorem ipsum dolor sit amet consectetur. Mattis sapien amet augue vulputate massa adipiscing facilisis aenean semper. Neque facilisis fames rutrum a. Massa arcu urna ultricies velit orci auctor diam.
-                </Text> */}
-                {/* <Button
-                    shadow
-                    color="primary"
-                    auto
-                    icon={<FontAwesomeIcon icon={faEnvelope} />}
-                >
-                    Contact me
-                </Button> */}
-            </Box>
-        </Box>
+            </div>
+        </div>
     )
 }

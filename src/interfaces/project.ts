@@ -9,6 +9,6 @@ export interface Project {
     description: string;
     src: string;
     technologies: string[];
-    featured: boolean;
+    state: boolean;
     linksType: LinksType[]
 }

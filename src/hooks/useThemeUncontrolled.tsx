@@ -1,8 +1,8 @@
 import { CSSProperties, useMemo } from 'react'
-import { useBookStore } from '@/store'
+import { useTheme } from 'next-themes'
 
 export const useThemeUncontrolled = () => {
-    const { theme } = useBookStore()
+    const { theme } = useTheme()
 
     const controlledStyles:CSSProperties = useMemo(() => ({
         color: theme === "dark" ? '#FFFFFF' : "#000000"

@@ -1,64 +1,45 @@
-import { Container, Link } from '@nextui-org/react'
+import { Link } from '@nextui-org/react'
 
-import { useBookStore } from '@/store'
-import { Box, TransitionElement } from '../shared'
+// import { useBookStore } from '@/store'
+import { TransitionElement } from '../shared'
 import { GitHubSVG } from '../icons/GitHubSVG'
 import { LinkedInSVG } from '../icons'
 import { useIsMounted } from '@/hooks'
+import { config } from '@/config'
+import { capitalize } from '@/utils'
 
 export const SocialMedia = () => {
 
   const { isMounted } = useIsMounted(100)
 
   return (
-    <Container xl css={{
-      display: "flex",
-      justifyContent: "space-between",
-      position: "fixed",
-      bottom: 0,
-      // backgroundColor: "red",
-      mb: "40px",
-      '@smMax': {
-        flexDirection: "row-reverse",
-        position: "absolute",
-        height: "calc(650px + 76px)",
-        top: 0,
-      },
-      zIndex: 0
-    }}>
+    <div className="container mx-auto max-w-screen-2xl absolute lg:fixed inset-x-0 flex flex-row-reverse lg:flex-row justify-between bottom-0 mb-10 z-0">
 
-      <Box css={{
-        display: 'flex',
-        flexDirection: 'column',
-        width: "36px",
-        alignItems: 'center',
-        justifyContent: 'end',
-        gap: "20px",
-      }}>
+      <div className="flex flex-col w-[60px] items-center justify-end gap-5">
         <TransitionElement isMounted={isMounted} classNames='fadeleft' timeout={2000}>
-          <GitHubSVG />
-        </TransitionElement>
-        <TransitionElement isMounted={isMounted} classNames='fadeleft' timeout={2000}>
-          <LinkedInSVG />
-        </TransitionElement>
-      </Box>
-
-      <Box>
-        <TransitionElement isMounted={isMounted} classNames='faderight' timeout={2000}>
-          <Link
-            color="text"
-            href="mailto:Rafaelss427@gmail.com"
-            target='_blank'
-            rel="noreferrer noopener"
-            css={{
-              writingMode: "vertical-lr",
-              "@smMax": { display: "none" }
-            }}
-          >
-            Rafaelss427@gmail.com
+          <Link href={config.socialMedia.github} isExternal>
+            <GitHubSVG />
           </Link>
         </TransitionElement>
-      </Box>
-    </Container>
+        <TransitionElement isMounted={isMounted} classNames='fadeleft' timeout={2000}>
+          <Link href={config.socialMedia.linkedin} isExternal>
+            <LinkedInSVG />
+          </Link>
+        </TransitionElement>
+      </div>
+
+      <div>
+        <TransitionElement isMounted={isMounted} classNames='faderight' timeout={2000}>
+          <Link
+            className="hidden lg:block [writing-mode:vertical-lr]"
+            color="foreground"
+            href={`mailto:${config.contact}`}
+            isExternal
+          >
+            { capitalize(config.contact) }
+          </Link>
+        </TransitionElement>
+      </div>
+    </div>
   )
 }

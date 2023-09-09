@@ -1,7 +1,4 @@
 {
-    "head": {
-
-    },
     "navbar": {
         "links": [
             {
@@ -16,12 +13,17 @@
                 "label": "Contacto",
                 "href": "contact"
             }
-          ]
+        ],
+        "dropdown": {
+            "textEn": "Inglés",
+            "textEs": "Español"
+        }
     },
     "hero": {
-        "presentation":"Soy",
-        "description": "Una persona apasionada, responsable y perseverante, siempre en busca de nuevas oportunidades de aprendizaje y crecimiento. El esfuerzo y determinación son mis mayores fortalezas.",
-        "contact": "¡Contáctame!"
+        "presentation": "Soy",
+        "description": "Una persona determinada, apasionada, responsable y perseverante, siempre en busca de nuevas oportunidades de aprendizaje y crecimiento.",
+        "contact": "¡Contáctame!",
+        "cv": "Descargar CV"
     },
     "about": {
         "title": "Acerca de mí",
@@ -29,7 +31,7 @@
         "items": [
             {
                 "title": "¿Qué tipo de trabajo hago?",
-                "description": "Como apasionado desarrollador de sitios web, me identifico como full-stack que disfruta abordar todas las áreas relacionadas, desde el diseño hasta el backend y el frontend. Mi objetivo es crear experiencias digitales impactantes y funcionales que superen las expectativas de los usuarios objetivo."
+                "description": "Como apasionado desarrollador de sitios web, me identifico como desarrollador full stack que disfruta abordar todas las áreas relacionadas, desde el diseño hasta el backend y el frontend. Mi objetivo es crear experiencias digitales impactantes y funcionales que superen las expectativas de los usuarios objetivo."
             },
             {
                 "title": "¿Qué es lo que me apasiona y cuáles son las cosas que valoro?",
@@ -41,11 +43,11 @@
             },
             {
                 "title": "¿Qué hago actualmente?",
-                "description": "Actualmente me desempeño como desarrollador freelancer trabajando en varios proyectos. Considero que es una buena forma de mejorar mis habilidades mientras busco mejores oportunidades de trabajo."
+                "description": "Actualmente, me desempeño como desarrollador freelance, trabajando en proyectos reales y desafiantes. Considero que es una buena forma de mejorar mis habilidades mientras busco mejores oportunidades de trabajo."
             },
             {
                 "title": "Mi educación y certificaciones académicas",
-                "description": "Cuento con un título de Bachiller en Informática Empresarial impartido por la Universidad de Costa Rica, certificado de Diseño UX impartido por google y una insignia de Agile Explorer impartida por IBM SkillsBuild además de contar con varios certificados de Udemy que me han permitido mejorar habilidades específicas de programación."
+                "description": "Cuento con un título de Bachiller en Informática Empresarial impartido por la Universidad de Costa Rica, certificado de Diseño UX impartido por Google y una insignia de Agile Explorer impartida por IBM SkillsBuild además de contar con varios certificados de Udemy que me han permitido mejorar habilidades específicas de programación."
             }
         ]
     },
@@ -53,6 +55,7 @@
         "title": "Proyectos",
         "detail": "Proyecto destacado",
         "subtitle": "Otros proyectos",
+        "textState": "En Desarrollo",
         "featured": [
             {
                 "title": "Sala de Belleza y Academia Eleganzza",
@@ -78,7 +81,7 @@
             {
                 "title": "La Flor de Playa Negra",
                 "description": "El sitio web tiene como objetivo brindar información de cabañas para su posterior alquiler. Incorpora una landing page y páginas para cada cabaña con su respectiva información. Fue creado utilizando Next.js, incorporando autenticación y un sistema administrativo.",
-                "src": "/img/academia-eleganzza.webp",
+                "src": "/img/flor-playa-negra.webp",
                 "state": true,
                 "technologies": [
                     "Nextjs",
@@ -86,8 +89,7 @@
                     "Typescript",
                     "Mapbox",
                     "Google-Forms-API",
-                    "Paypal",
-                    "MySQL",
+                    "SQLite",
                     "i18n"
                 ],
                 "linksType": [
@@ -100,8 +102,8 @@
             {
                 "title": "FutsalaSC",
                 "description": "FutsalaSC es una iniciativa estudiantil, el objetivo de la página es compartir noticias relacionadas al deporte. Cuenta con un sistema administrativo para crear, actualizar y borrar noticias.",
-                "src": "/img/academia-eleganzza.webp",
-                "state": true,
+                "src": "/img/futsala-sc.webp",
+                "state": false,
                 "technologies": [
                     "Nextjs",
                     "Material-UI",
@@ -110,35 +112,62 @@
                 "linksType": [
                     {
                         "name": "github",
-                        "url": ""
+                        "url": "https://github.com/RafaelSS427/futsala-sc"
                     },
                     {
                         "name": "browser",
-                        "url": ""
+                        "url": "https://futsala-sc.vercel.app"
                     }
                 ]
             }
         ],
         "secondary": [
-            {   
-                "title": "OMI-CECAMM",
-                "description": "Maquetado de web que permite visualizar información de cursos",
-                "src": "/img/academia-eleganzza.webp",
-                "state": false,
+            {
+                "title": "age-calculator-app",
+                "description": "En esta página web podrás saber la edad en años, meses y días dada una fecha de nacimento.",
                 "technologies": [
                     "React",
-                    "SASS",
-                    "JS",
-                    "i18n"
+                    "date-fns",
+                    "animejs"
                 ],
                 "linksType": [
                     {
                         "name": "github",
-                        "url": ""
+                        "url": "https://github.com/RafaelSS427/age-calculator-app"
                     },
                     {
                         "name": "browser",
-                        "url": ""
+                        "url": "https://rafaelss427.github.io/age-calculator-app/"
+                    }
+                ]
+            },
+            {
+                "title": "pokemon-app-next",
+                "description": "Con esta página fui capaz de entender los fundamentos de Next.js gracias al curso del Profesor Fernando Herrera.",
+                "technologies": [
+                    "Next.js",
+                    "NextUI",
+                    "TypeScript"
+                ],
+                "linksType": [
+                    {
+                        "name": "github",
+                        "url": "https://github.com/RafaelSS427/pokemon-app-next"
+                    }
+                ]
+            },
+            {
+                "title": "Botanica_web",
+                "description": "Unos de mis primeros proyectos web de la universidad del cual me sentí orgulloso.",
+                "technologies": [
+                    "express",
+                    "handlebars",
+                    "passport"
+                ],
+                "linksType": [
+                    {
+                        "name": "github",
+                        "url": "https://github.com/RafaelSS427/Botanica_web"
                     }
                 ]
             }
@@ -146,14 +175,14 @@
     },
     "contact": {
         "title": "Contáctame",
-        "description": "¡Sientete en la libertad de contactarme en cualquier momento, mi computadora y yo estaremos encantados en responderte! :D",
+        "description": "Actualmente me encuentro en busqueda de nuevas oportunidades de trabajo. ¡Sientete en la libertad de contactarme en cualquier momento, mi computadora y yo estaremos encantados en responderte! :D",
         "ui": {
             "contactAction": "¡Contáctame!"
         }
     },
     "footer": {
-        "caption1": "Hecho con",
-        "caption2": "Diseño inspirado en el portafolio de <0>Brittany</0> Chiang y la página de <1>Vercel</1>"
+        "caption1": "Hecho con <0>Next.js</0> y <1>NextUI</1>",
+        "caption2": "Diseño inspirado en el portafolio de <0>Brittany Chiang</0> y en el sitio web de <1>Vercel</1>"
     },
     "ui": {
         "show": {

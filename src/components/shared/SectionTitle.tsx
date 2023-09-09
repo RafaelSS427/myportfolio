@@ -1,43 +1,24 @@
 import { FC } from 'react'
-import { Text } from '@nextui-org/react'
-
-import { Box } from './Box'
-import { Circle } from '../ui';
+import { Circle } from '../ui'
 
 interface Props {
     title: string;
     titleNumber?: number;
-    mb?: string;
+    my?: string;
 }
 
-export const SectionTitle: FC<Props> = ({ title, titleNumber = 1, mb = "24px" }) => {
+const SectionTitle: FC<Props> = ({ title, titleNumber = 1, my = "my-6" }) => {
     return (
-        <Box css={{ display: "flex", flexDirection: "column", alignItems: "center", my: mb }}>
-            <Box css={{
-                background: `linear-gradient($primarySolidContrast, $primary)`,
-                // background: "linear-gradient($primarySolidContrast, #02AABD)",
-                width: "1px",
-                height: "125px"
-            }} />
-            <Circle 
+        <div className={`flex flex-col items-center ${my}`}>
+            <div className="bg-gradient-to-b from-primary-foreground to-primary w-px h-32" />
+            <Circle
                 titleNumber={`0${titleNumber}`}
                 sizeBox="40px"
-                sizeText={16}
+                fontSize={16}
             />
-            <Text
-                h2
-                color="$primary"
-                weight="semibold"
-                css={{
-                    fontSize: 32,
-                    "@xs": {
-                        fontSize: 36
-                    }
-                }}
-            >
-                {title}
-            </Text>
-            {/* <Text h2 css={{ textGradient: "45deg, #02AABD -20%, #00CDAC 50%" }} weight="bold">{ title }</Text> */}
-        </Box>
+            <h2 className="text-2xl text-primary font-semibold sm:text-3xl mt-2">{title}</h2>
+        </div>
     )
 }
+
+export default SectionTitle

@@ -1,22 +1,17 @@
 import { FC } from 'react'
-import { Text } from '@nextui-org/react'
+import { cn } from '@nextui-org/react'
 
 interface Props {
-    text: string,
-    textAlign?: "start" | "end" | "left" | "right" | "center" | "justify" | "match-parent",
-    size?: number
+    text: string;
+    textAlign?: "text-start" | "text-end" | "text-left" | "text-right" | "text-center";
+    size?: number;
 }
 
-export const Description:FC<Props> = ({ text, textAlign = "start", size = 20 }) => (
-    // Lorem ipsum dolor sit amet consectetur. Mattis sapien amet augue vulputate massa adipiscing facilisis aenean semper. Neque facilisis fames rutrum a. Massa arcu urna ultricies velit orci auctor diam.
-    <Text size={size} css={{
-        mb: size !== 20 ? 0 : 30,
-        letterSpacing: "$tight",
-        textAlign: textAlign,
-        "@xsMax": {
-            fontSize: 16
-        }
-    }}>
-        { text }
-    </Text>
+export const Description: FC<Props> = ({ text, textAlign = "text-start", size }) => (
+    <p
+        className={cn(['text-base', 'tracking-tight', textAlign])}
+        style={{ marginBottom: size !== 20 ? 0 : 30 }}
+    >
+        {text}
+    </p>
 )

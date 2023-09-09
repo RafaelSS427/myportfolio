@@ -12,7 +12,7 @@ export const useIsMounted = (delay: number = 0) => {
         return () => {
             clearTimeout(timeout)
         }
-    }, [setIsMounted])
+    }, [setIsMounted, delay])
 
     return {
         isMounted

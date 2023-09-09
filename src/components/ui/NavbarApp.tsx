@@ -1,45 +1,24 @@
-import { Key, createRef, useEffect, useMemo } from 'react'
+import { Key, createRef, useMemo, useState } from 'react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
-import { Navbar, Link, Text, Dropdown, Button } from '@nextui-org/react'
+import { Navbar, Dropdown, Button, NavbarContent, Link, NavbarBrand, NavbarItem, NavbarMenu, NavbarMenuItem, NavbarMenuToggle, DropdownTrigger, DropdownItem, DropdownMenu } from '@nextui-org/react'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown, faGlobe } from '@fortawesome/free-solid-svg-icons'
 
-import { Box, TransitionElement } from '../shared'
 import { LogoApp, SwitchApp } from './'
 import { useIsMounted, useThemeUncontrolled } from '@/hooks'
-import { useBookStore } from '@/store'
+import { TransitionElement } from '../shared'
 
 type LinksNavbar = {
   label: string,
   href: string
 }
 
-interface PropsToggle  {
-  isOpen: boolean;
-  setIsOpen: (value:boolean) => void;
-}
-
-const ToogleApp = ({ isOpen, setIsOpen }: PropsToggle) => {
-  return (
-    <Navbar.Toggle
-      isSelected={isOpen}
-      aria-label="toggle navigation"
-      onChange={() => setIsOpen(!isOpen)}
-      css={{
-        mr: '10px',
-        '@xs': { display: 'none' },
-      }}
-    />
-  )
-}
-
 export const NavbarApp = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const router = useRouter()
-  const isOpenMenuMobile = useBookStore(store => store.isOpenMenuMobile)
-  const setIsOpenMenuMobile = useBookStore(store => store.setIsOpenMenuMobile)
 
   const { t } = useTranslation('home')
 
@@ -53,137 +32,89 @@ export const NavbarApp = () => {
     router.push('/', undefined, { locale: e.toString(), scroll: false })
   }
 
-  const links: LinksNavbar[] = t('navbar.links', { returnObjects: true })
+  const links: LinksNavbar[] = useMemo(() => t('navbar.links', { returnObjects: true }), [t])
 
   const handleLinkMobile = (href: string) => {
-    document.body.style.overflow = 'initial';
-    setIsOpenMenuMobile(false)
+    setIsMenuOpen(false)
     router.push(`/${getLocale}#${href}`, undefined, { scroll: false })
   }
 
-  // useEffect(() => {
-  //   document.body.style.overflow = isOpenMenuMobile ? 'hidden' : 'scroll';
-  // }, [isOpenMenuMobile])
-
   return (
-    // <Navbar shouldHideOnScroll disableShadow maxWidth="fluid" variant="static">
-    <Navbar disableShadow disableScrollHandler maxWidth="fluid" variant="floating">
-      <Navbar.Brand>
-        <ToogleApp isOpen={isOpenMenuMobile} setIsOpen={setIsOpenMenuMobile} />
-        {/* <Navbar.Toggle
-          isSelected={isOpenMenuMobile}
-          aria-label="toggle navigation"
-          onChange={() => setIsOpenMenuMobile(!isOpenMenuMobile)}
-          css={{
-            mr: '10px',
-            '@xs': { display: 'none' },
-          }}
-        /> */}
-        <TransitionElement isMounted={isMounted} classNames="fadeleft" timeout={2000}>
-          <LogoApp width="60px" height="60px" />
-        </TransitionElement>
-      </Navbar.Brand>
-      <Navbar.Content hideIn="xs" variant="underline">
+    <Navbar
+      isMenuOpen={isMenuOpen}
+      onMenuOpenChange={setIsMenuOpen}
+      maxWidth="2xl"
+      className="py-2"
+    >
+      <NavbarContent justify="start">
+        <NavbarMenuToggle className="sm:hidden" aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
+        <NavbarBrand>
+          <TransitionElement isMounted={isMounted} classNames="fadeleft" timeout={2000}>
+            <LogoApp width="60px" height="60px" />
+          </TransitionElement>
+        </NavbarBrand>
+      </NavbarContent>
+
+      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+
         <TransitionGroup component={null}>
           {
             isMounted &&
             links.map(({ label, href }, i) => {
               const nodeRef = createRef<any>()
               return (
-                <CSSTransition classNames="fadedown" timeout={2000} key={`${label}-${i}`} nodeRef={nodeRef}>
-                  <Navbar.Link href={`/${getLocale}#${href}`} style={{ transitionDelay: `${i * 100}ms` }} ref={nodeRef}>
-                    <Text css={{ textGradient: "45deg, #02AABD -20%, #00CDAC 50%", mr: 4 }} weight="bold">0{i + 1}.</Text> {label}
-                  </Navbar.Link>
+                <CSSTransition classNames="fadedown" timeout={2000} key={`${href}-${i}`} nodeRef={nodeRef}>
+                  <NavbarItem key={`${label}-${i}`}>
+                    <Link color="foreground" href={`/${getLocale}#${href}`} style={{ transitionDelay: `${i * 100}ms` }} ref={nodeRef}>
+                      <strong className="text-gradient mr-1">0{i + 1}.</strong> {label}
+                    </Link>
+                  </NavbarItem>
                 </CSSTransition>
               )
             })
           }
         </TransitionGroup>
-      </Navbar.Content>
+      </NavbarContent>
 
-      <TransitionElement isMounted={isMounted} classNames="faderight" timeout={2000} >
-        <Navbar.Content>
-          <Navbar.Item>
-            <Dropdown isBordered>
-              <Dropdown.Button
-                auto
-                light
-                css={{
-                  px: 0,
-                  dflex: "center",
-                  svg: { pe: "none" },
-                }}
-                iconRight={<FontAwesomeIcon icon={faChevronDown} size="xs" style={controlledStyles} />}
-                ripple={false}
-              >
-                <Box css={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  gap: "10px"
-                }}>
-                  <FontAwesomeIcon icon={faGlobe} size="lg" style={controlledStyles} />
-                  <Text css={{ textDecorationLine: "underline" }}>{router.locale === "en" ? "English" : "Español"}</Text>
-                </Box>
-              </Dropdown.Button>
-
-
-              <Dropdown.Menu
-                selectionMode="single"
-                aria-label="languages"
-                css={{
-                  $$dropdownMenuWidth: "340px",
-                  $$dropdownItemHeight: "70px",
-                  "& .nextui-dropdown-item": {
-                    py: "$4",
-                    // dropdown item left icon
-                    svg: {
-                      color: "$secondary",
-                      mr: "$4",
-                    },
-                    // dropdown item title
-                    "& .nextui-dropdown-item-content": {
-                      w: "100%",
-                      fontWeight: "$semibold",
-                    },
-                  },
-                }}
-                onAction={onActionMenu}
-              >
-                <Dropdown.Item key="es">
-                  Spanish
-                </Dropdown.Item>
-                <Dropdown.Item key="en">
-                  English
-                </Dropdown.Item>
-              </Dropdown.Menu>
+      <NavbarContent justify="end">
+        <NavbarItem>
+          <TransitionElement isMounted={isMounted} classNames="faderight" timeout={2000}>
+            <Dropdown>
+              <DropdownTrigger>
+                <Button
+                  startContent={<FontAwesomeIcon icon={faChevronDown} size="xs" style={controlledStyles} />}
+                  variant="light"
+                  disableRipple
+                >
+                  <div className="flex items-center justify-between gap-1">
+                    <FontAwesomeIcon icon={faGlobe} size="lg" style={controlledStyles} />
+                    <p className="underline">{router.locale === "en" ? "English" : "Español"}</p>
+                  </div>
+                </Button>
+              </DropdownTrigger>
+              <DropdownMenu aria-label="Static Actions" onAction={onActionMenu}>
+                <DropdownItem key="es">{ t('navbar.dropdown.textEs') }</DropdownItem>
+                <DropdownItem key="en">{ t('navbar.dropdown.textEn') }</DropdownItem>
+              </DropdownMenu>
             </Dropdown>
-          </Navbar.Item>
-          <Navbar.Item>
+          </TransitionElement>
+        </NavbarItem>
+        <NavbarItem>
+
+          <TransitionElement isMounted={isMounted} classNames="faderight" timeout={2000}>
+
             <SwitchApp />
-          </Navbar.Item>
-        </Navbar.Content>
+          </TransitionElement>
+        </NavbarItem>
+      </NavbarContent>
 
-      </TransitionElement>
-
-      <Navbar.Collapse isOpen={isOpenMenuMobile} >
+      <NavbarMenu className="mt-4">
         {links.map(({ label, href }, index) => (
-          <Navbar.CollapseItem key={label + index}>
-            <Button onPress={() => handleLinkMobile(href)} auto light ripple={false} animated={false}>
-              {label}
-            </Button>
-            {/* <Link
-              color="inherit"
-              css={{
-                minWidth: "100%",
-              }}
-              href={`/${getLocale}#${href}`}
-            >
-              {label}
-            </Link> */}
-          </Navbar.CollapseItem>
+          <NavbarMenuItem onClick={() => handleLinkMobile(href)} key={`${label}-${index}`}>
+            <p className="text-primary">{label}</p>
+          </NavbarMenuItem>
         ))}
-      </Navbar.Collapse>
+      </NavbarMenu>
     </Navbar>
   )
 }

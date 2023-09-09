@@ -1,7 +1,5 @@
-import { FC, PropsWithChildren, useRef } from 'react'
+import { FC, PropsWithChildren, ReactNode, useRef } from 'react'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
-
-import { Box } from './Box'
 
 interface Props extends PropsWithChildren {
     isMounted: boolean;
@@ -9,17 +7,17 @@ interface Props extends PropsWithChildren {
     timeout: number;
 }
 
-export const TransitionElement:FC<Props> = ({ isMounted, classNames, timeout, children }) => {
-    
-  const nodeElement = useRef<any>()
-  
+export const TransitionElement: FC<Props> = ({ isMounted, classNames, timeout, children }) => {
+
+    const nodeElement = useRef<any>()
+
     return (
         <TransitionGroup component={null}>
             {isMounted && (
-                <CSSTransition classNames={ classNames } timeout={ timeout } nodeRef={nodeElement}>
-                    <Box ref={nodeElement}>
-                        { children }
-                    </Box>
+                <CSSTransition classNames={classNames} timeout={timeout} nodeRef={nodeElement}>
+                    <div ref={nodeElement}>
+                        {children}
+                    </div>
                 </CSSTransition>
             )}
         </TransitionGroup>

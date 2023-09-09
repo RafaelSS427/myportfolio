@@ -16,12 +16,17 @@
                 "label": "Contact",
                 "href": "contact"
             }
-          ]
+          ],
+        "dropdown": {
+            "textEn": "English",
+            "textEs": "Spanish"
+        }
     },
     "hero": {
         "presentation": "I'm",
-        "description": "A passionate, responsible, and persevering individual, always in pursuit of new learning and growth oportunities. Effort and determination are my greatest strengths.",
-        "contact": "Contact me!"
+        "description": "A determinated, passionate, responsible, and persevering individual, always in pursuit of new learning and growth oportunities.",
+        "contact": "Contact me!",
+        "cv": "Download CV"
     },
     "about": {
         "title": "About me",
@@ -29,7 +34,7 @@
         "items": [
             {
                 "title": "What type of work do I do?",
-                "description": "As a passionate website developer, I identify as a full-stack enthusiast who enjoys tackling all related areas, from design to backend aand frontend. My goal is to create impactful and funcional digital experiences that exceed the expectations of the target users."
+                "description": "As a passionate website developer, I identify as a full stack developer who enjoys tackling all related areas, from design to backend aand frontend. My goal is to create impactful and funcional digital experiences that exceed the expectations of the target users."
             },
             {
                 "title": "What I am passionate about and what are the things I value?",
@@ -41,7 +46,7 @@
             },
             {
                 "title": "What am I currently doing?",
-                "description": "Currently, I work as freelance developer on various projects. I believe this is a great way to enhance my skills while seeking better job opportunities."
+                "description": "Currently, I work as a freelance developer, tackling real and challenging projects. I believe this is a great way to enhance my skills while seeking better job opportunities."
             },
             {
                 "title": "My education and academic certitifications",
@@ -53,7 +58,7 @@
         "title": "Projects",
         "detail": "Featured project",
         "subtitle": "Other projects",
-        "state": true,
+        "textState": "Developing",
         "featured": [
             {
                 "title": "Sala de Belleza y Academia Eleganzza",
@@ -79,7 +84,7 @@
             {
                 "title": "La Flor de Playa Negra",
                 "description": "The website aims to privide information about cabins for future rentals. It includes a landing page and individual pages for each cabin with their respective information. It was build using Next.js, incorporating authentication and an administrative system.",
-                "src": "/img/academia-eleganzza.webp",
+                "src": "/img/flor-playa-negra.webp",
                 "state": true,
                 "technologies": [
                     "Nextjs",
@@ -87,8 +92,7 @@
                     "Typescript",
                     "Mapbox",
                     "Google-Forms-API",
-                    "Paypal",
-                    "MySQL",
+                    "SQLite",
                     "i18n"
                 ],
                 "linksType": [
@@ -101,7 +105,7 @@
             {
                 "title": "FutsalaSC",
                 "description": "FutsalaSC is a student initiative, the purpose of the website is to share news related to sports. It features an administrative system for creating, updating, and deleting news.",
-                "src": "/img/academia-eleganzza.webp",
+                "src": "/img/futsala-sc.webp",
                 "state": false,
                 "technologies": [
                     "Nextjs",
@@ -111,11 +115,62 @@
                 "linksType": [
                     {
                         "name": "github",
-                        "url": ""
+                        "url": "https://github.com/RafaelSS427/futsala-sc"
                     },
                     {
                         "name": "browser",
-                        "url": ""
+                        "url": "https://futsala-sc.vercel.app"
+                    }
+                ]
+            }
+        ],
+        "secondary": [
+            {
+                "title": "age-calculator-app",
+                "description": "On this web site you can know your age in years, months and days given a date of birth.",
+                "technologies": [
+                    "React",
+                    "Date-fns",
+                    "Animejs"
+                ],
+                "linksType": [
+                    {
+                        "name": "github",
+                        "url": "https://github.com/RafaelSS427/age-calculator-app"
+                    },
+                    {
+                        "name": "browser",
+                        "url": "https://rafaelss427.github.io/age-calculator-app/"
+                    }
+                ]
+            },
+            {
+                "title": "pokemon-app-next",
+                "description": "With this web site I was able to understand the fundamentals of Next.js thanks to the course by Professor Fernando Herrera.",
+                "technologies": [
+                    "Next.js",
+                    "NextUI",
+                    "TypeScript"
+                ],
+                "linksType": [
+                    {
+                        "name": "github",
+                        "url": "https://github.com/RafaelSS427/pokemon-app-next"
+                    }
+                ]
+            },
+            {
+                "title": "Botanica_web",
+                "description": "One of my first web projects from university that I was proud of.",
+                "technologies": [
+                    "Express",
+                    "Handlebars",
+                    "Passport"
+                ],
+                "linksType": [
+                    {
+                        "name": "github",
+                        "url": "https://github.com/RafaelSS427/Botanica_web"
                     }
                 ]
             }
@@ -123,13 +178,13 @@
     },
     "contact": {
         "title": "Contact me",
-        "description": "Feel free to contact me anytime, my computer and I will be happy to respond to you! :D",
+        "description": "I am currently looking for new job opportunities. Feel free to contact me anytime, my computer and I will be happy to respond to you! :D",
         "ui": {
             "contactAction": "Contact me!"
         }
     },
     "footer": {
-        "caption1": "Made with",
+        "caption1": "Made with <0>Next.js</0> and <1>NextUI</1>",
         "caption2": "Design inspired by <0>Brittany Chiang's</0> portfolio and the <1>Vercel</1> website."
     },
     "ui": {

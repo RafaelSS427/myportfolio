@@ -1,30 +1,33 @@
-import { FC } from 'react'
-import { Switch, SwitchEvent } from '@nextui-org/react'
-import { faMoon } from '@fortawesome/free-solid-svg-icons'
+import { FC, useMemo } from 'react'
+import { Switch } from '@nextui-org/react'
+import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import { useBookStore } from '@/store'
-import { SunSVG } from '../icons'
+import { useTheme } from 'next-themes'
 
 export const SwitchApp: FC = () => {
-    
-    const { theme, updateTheme } = useBookStore()
+    const { theme, setTheme } = useTheme()
+    const isSelected = useMemo(() => !(theme === 'dark'), [theme])
 
-    const handleSwitch = (e: SwitchEvent) => {
-        const selectedTheme = e.target.checked ? 'light' : 'dark'
-        localStorage.setItem('theme', selectedTheme)
-        updateTheme(selectedTheme)
+    const handleSwitch = (value: boolean) => {
+        const selectedTheme = value ? 'light' : 'dark'
+        setTheme(selectedTheme)
     }
 
     return (
         <Switch
-            checked={!(theme === 'dark')}
-            onChange={handleSwitch}
+            isSelected={isSelected}
+            onValueChange={handleSwitch}
             color="primary"
-            shadow
             size="lg"
-            iconOn={<SunSVG />}
-            iconOff={<FontAwesomeIcon icon={faMoon} style={{ color: "#FFF" }} />}
+
+            thumbIcon={({ isSelected, className }) =>
+                isSelected ? (
+                    <FontAwesomeIcon icon={faSun} className={ className } />
+                ) : (
+                    <FontAwesomeIcon icon={faMoon} className={ className } />
+                )
+            }
         />
     )
 }

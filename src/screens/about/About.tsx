@@ -1,113 +1,92 @@
 import { useState } from 'react'
 import { useTranslation } from 'next-i18next'
-import { Grid, Tooltip, Text, Button } from '@nextui-org/react'
-import { Box, SectionTitle, ItemAbout } from '@/components'
+import { Tooltip, Button } from '@nextui-org/react'
+// import { SectionTitle } from '@/components'
 import { useMediaQuery } from '@/hooks'
 import { IItemAbout } from '@/interfaces'
 import { config } from '@/config'
+import { tailwindTheme } from '@/utils'
+
+import ItemAbout from '@/components/home/ItemAbout'
+import SectionTitle from '@/components/shared/SectionTitle'
 
 export const About = () => {
     const [show, setShow] = useState<boolean>(false)
     const { t } = useTranslation('home')
-    const match = useMediaQuery(600)
+    const match = useMediaQuery(parseInt(tailwindTheme.screens.sm))
 
     const itemsAbout: IItemAbout[] = t('about.items', { returnObjects: true })
 
     return (
-        <Box id="about" css={{ minHeight: "100vh", maxHeight: "auto" }}>
+        <div id="about" className="min-h-screen">
             <SectionTitle title={t('about.title')} titleNumber={2} />
 
-            <Box
-                css={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: 20
-                }}
-            >
+            <div className="flex flex-col gap-5">
                 {
-                    itemsAbout.map(({ title, description }, index) => (
-                        <ItemAbout key={title.trim().substring(0, title.length / 2)} title={title} description={description} index={index + 1} />
+                    itemsAbout.map((item, i) => (
+                        <ItemAbout key={item.title} itemAbout={item} itemIndex={i + 1} />
                     ))
                 }
-            </Box>
+            </div>
 
-            {/* <Description
-                text="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab voluptas magni nam quod reiciendis sit facere repellendus itaque sapiente aspernatur, esse quos earum dolor, porro, quas cum iste necessitatibus exercitationem!"
-                textAlign="center"
-            /> */}
+            <h3 className="text-primary text-center my-10 font-semibold">{t('about.subtitle')}</h3>
 
-            <Text color="$primary" h5 css={{ textAlign: "center", mt: 40, mb: 20 }}>{ t('about.subtitle') }</Text>
 
-            <Grid.Container gap={2} justify="center">
+            <div className="grid gap-4 grid-cols-12">
+                <div className="hidden sm:block sm:col-span-2" />
                 {
                     config.skills.main.map(({ name, logo }, i) => (
-                        <Grid xs={match ? 5 : 2.5} sm={2} key={name}>
-                            <Box
-                                css={{
-                                    display: "flex",
-                                    justifyContent: "center",
-                                    alignItems: "center",
-                                    width: "100%"
-                                }}
-                            >
-                                <Tooltip content={name} placement="top" color="invert">
-                                    <Box
-                                        className={`animation-updown-${i % 2 === 0 ? 'up' : 'down'}`}
-                                    >
+                        <div key={name} className="col-span-6 sm:col-span-2">
+                            <div className="grid place-content-center w-full">
+                                <Tooltip content={name} color="primary">
+                                    <div className={`animation-updown-${i % 2 === 0 ? 'up' : 'down'}`}>
                                         {logo}
-                                    </Box>
+                                    </div>
                                 </Tooltip>
-                            </Box>
-                        </Grid>
+                            </div>
+                        </div>
                     ))
                 }
-            </Grid.Container>
+            </div>
 
-            <Box css={{ display: "flex", justifyContent: "center" }}>
+            <div className="flex justify-center">
                 <Button
-                    auto
-                    bordered
+                    disableRipple
+                    variant="bordered"
                     color="primary"
-                    css={{
-                        border: "none",
-                        textDecoration: "underline"
-                    }}
+                    className="border-none underline"
                     onPress={() => setShow(v => !v)}
                 >
                     {!show ? t('ui.show.more') : t('ui.show.less')}
                 </Button>
-            </Box>
+            </div>
+
 
             {
                 show && (
-                    <Grid.Container gap={2} justify="center" css={{ mt: 4 }}>
-
+                    <div className="grid gap-y-10 sm:gap-y-5 grid-cols-12 justify-center mt-8">
                         {
                             config.skills.secondary.map(({ name, logo }, i) => (
-                                <Grid xs={match ? 4 : 2} sm={1.6} key={name}>
-                                    <Box
-                                        css={{
-                                            display: "flex",
-                                            justifyContent: "center",
-                                            alignItems: "center",
-                                            width: "100%"
+                                <div key={name} className="col-span-4 sm:col-span-3">
+                                    <div
+                                        className="grid"
+                                        style={{
+                                            placeContent: match ? 'center' : (i > 3 && i < 8) ? 'end' : 'center'
                                         }}
                                     >
-                                        <Tooltip content={name} placement="top" color="invert">
-                                            <Box
-                                                className={`animation-updown-${i % 2 === 0 ? 'up' : 'down'}`}
-                                            >
+                                        <Tooltip content={name} color="primary">
+                                            <div className={`animation-updown-${i % 2 === 0 ? 'up' : 'down'}`}>
                                                 {logo}
-                                            </Box>
+                                            </div>
                                         </Tooltip>
-                                    </Box>
-                                </Grid>
+                                    </div>
+                                </div>
                             ))
                         }
-                    </Grid.Container>
+                    </div>
                 )
             }
 
-        </Box>
+        </div>
     )
 }

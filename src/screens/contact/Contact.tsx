@@ -1,31 +1,30 @@
-import { Box, ButtonContact, Description, SectionTitle } from '@/components'
 import { useTranslation } from 'next-i18next'
+import { ButtonContact, Description } from '@/components'
+import SectionTitle from '@/components/shared/SectionTitle'
 
 export const Contact = () => {
   const { t } = useTranslation('home')
 
   return (
-    <Box id="contact" css={{ minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent:"space-evenly" }}>
+    <div id="contact" className="min-h-screen flex flex-col justify-evenly">
+      <div>
+        <SectionTitle title={t('contact.title')} titleNumber={3} />
+        <div className="grid place-content-center">
 
-      <Box>
-      <SectionTitle title={t('contact.title')} titleNumber={3} mb="16px" />
-        <Description
-          text={ t('contact.description') }
-          textAlign="center"
-          size={20}
-        />
+          <div className="max-w-screen-sm">
+            <Description
+              text={t('contact.description')}
+              textAlign="text-center"
+              size={20}
+            />
+          </div>
+        </div>
 
-        <Box
-          css={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center"
-          }}
-        >
-          <ButtonContact text={ t('contact.ui.contactAction') } />
-        </Box>
-      </Box>
+        <div className="grid place-content-center">
+          <ButtonContact text={t('contact.ui.contactAction')} />
+        </div>
+      </div>
 
-    </Box>
+    </div>
   )
 }

@@ -1,53 +1,48 @@
-import React from 'react'
-import { Text } from '@nextui-org/react'
-import { Box } from '../shared'
-import { Circle } from '../ui'
+import { FC, useMemo } from 'react';
+import { Circle } from '../ui';
+import { type IItemAbout } from '@/interfaces';
 
 interface Props {
-    title: string;
-    description: string;
-    index: number;
+    itemAbout: IItemAbout;
+    itemIndex: number;
 }
 
-export const ItemAbout = ({ title, description, index }: Props) => {
+const ItemAbout:FC<Props> = ({ itemAbout, itemIndex }) => {
+    const { title, description } = itemAbout
 
-    const isReverse = index % 2 === 0
+    const isReverse = useMemo(() => itemIndex % 2 === 0, [itemIndex])
 
     return (
-        <Box>
-            <Box
-                css={{
-                    display: "flex",
-                    gap: 10,
+        <div>
+            <div
+                className="flex gap-3 items-center mb-3"
+                style={{
                     flexDirection: isReverse ? "row-reverse" : "row",
-                    alignItems: "center",
-                    mb: 10
                 }}
             >
-                <Box css={{ width:"24px" }}>
-                    
-                <Circle
-                    titleNumber={index}
-                    sizeBox="24px"
-                    sizeText={14}
-                />
-                </Box>
-                <Text color="$primary" h5 css={{ mb: 0, textAlign: isReverse ? "end" : "start" }}>{title}</Text>
-            </Box>
-            <Box css={{ display: 'flex', justifyContent: isReverse ? "end" : "start" }}>
-                <Box
-                    css={{
-                        pl: isReverse ? 0 : "34px",
-                        pr: isReverse ? "34px" : 0,
-                        maxWidth: "600px",
-                        "@xsMax": {
-                            p: 0,
-                        }
+                <div className="w-[24px]">
+                    <Circle
+                        titleNumber={itemIndex}
+                        sizeBox="24px"
+                        fontSize={14}
+                    />
+                </div>
+
+                <h4 className="text-primary mb-0" style={{ textAlign: isReverse ? "end" : "start" }}>{title}</h4>
+            </div>
+            <div className="flex" style={{ justifyContent: isReverse ? "end" : "start" }}>
+                <div
+                    className="max-w-screen-sm"
+                    style={{
+                        paddingLeft: isReverse ? 0 : "34px",
+                        paddingRight: isReverse ? "34px" : 0,
                     }}
                 >
-                    <Text css={{ textAlign: isReverse ? "end" : "start" }}>{description}</Text>
-                </Box>
-            </Box>
-        </Box>
+                    <p style={{ textAlign: isReverse ? "end" : "start" }}>{description}</p>
+                </div>
+            </div>
+        </div>
     )
 }
+
+export default ItemAbout

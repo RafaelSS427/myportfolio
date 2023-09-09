@@ -1,42 +1,61 @@
-import { Grid, Card, Text } from '@nextui-org/react'
+import { FC } from 'react'
+import { Card, CardBody, CardHeader, CardFooter, Link } from '@nextui-org/react'
 import { CarpterSVG, GitHubSVG, OpenSVG } from '../icons'
-import { Box } from '../shared'
-import { useMediaQuery } from '@/hooks'
+import { Project } from '@/interfaces'
 
-export const AnotherProjectCard = () => {
-    const matchDevice = useMediaQuery(500)
+interface Props {
+    project: Omit<Project, 'src' | 'state'>
+}
+
+export const AnotherProjectCard: FC<Props> = ({ project }) => {
+    const { title, description, technologies, linksType } = project
 
     return (
-        <Grid xs={matchDevice ? 12 : 6} sm={4}>
-            <Card css={{ p: "$6" }} isHoverable isPressable>
-                <Card.Header>
-                    <Box css={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
-                        <Box>
-                            <CarpterSVG />
-                        </Box>
+        <Card>
+            <CardHeader>
+                <div className="flex justify-between w-full">
+                    <div>
+                        <CarpterSVG />
+                    </div>
 
-                        <Box css={{ display: "flex", alignItems: "center", gap: "$5" }}>
-                            <GitHubSVG />
-                            <OpenSVG />
-                        </Box>
-                    </Box>
-                </Card.Header>
-                <Card.Body css={{ py: "$2" }}>
-                    <Text h4>
-                        TODO
-                    </Text>
-                    <Text>
-                        Make beautiful websites regardless of your design experience.
-                    </Text>
-                </Card.Body>
-                <Card.Footer>
-                    <Box css={{ display: "flex", gap: "$5" }}>
-                        <Text size={12} color="$primary">Nextjs</Text>
-                        <Text size={12} color="$primary">Material-UI</Text>
-                        <Text size={12} color="$primary">Typescript</Text>
-                    </Box>
-                </Card.Footer>
-            </Card>
-        </Grid>
+                    <div className="flex items-center gap-5">
+                        {
+                            linksType.map(({ name, url }) => {
+                                switch (name) {
+                                    case 'github':
+                                        return (
+                                            <Link key={name} href={url} isExternal>
+                                                <GitHubSVG />
+                                            </Link>
+                                        )
+                                    case 'browser':
+                                        return (
+                                            <Link key={name} href={url} isExternal>
+                                                <OpenSVG />
+                                            </Link>
+                                        )
+                                    default:
+                                        return null
+                                }
+                            })
+                        }
+                    </div>
+                </div>
+            </CardHeader>
+            <CardBody className="py-2">
+                <h4 className="text-lg mb-2 capitalize font-semibold">{title}</h4>
+                <p className="text-small">{description}</p>
+            </CardBody>
+            <CardFooter className="px-5">
+                <div className="flex gap-5">
+                    {
+                        technologies.map(tech => (
+                            <p key={tech} className="text-small text-primary">{tech}</p>
+                        ))
+                    }
+                    <p className="text-small text-primary">...</p>
+                </div>
+            </CardFooter>
+        </Card>
     )
 }

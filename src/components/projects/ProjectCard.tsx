@@ -1,131 +1,92 @@
-import { FC } from 'react'
+import { FC, useCallback } from 'react'
 import { useTranslation } from 'next-i18next'
-import { Grid, Text, Image, Link, Card } from '@nextui-org/react'
+import { Image, Link, Chip } from '@nextui-org/react'
 import { GitHubSVG, OpenSVG } from '../icons'
-import { Box, Description } from '../shared'
-import { useThemeUncontrolled } from '@/hooks'
+import { Description } from '../shared'
 import { Project } from '@/interfaces'
 
 interface Props {
     project: Project
-    direction?: "row-reverse" | "row" | "column" | "column-reverse"
+    direction?: "row-reverse" | "row"
 }
 
 export const ProjectCard: FC<Props> = ({ direction = "row", project }) => {
     const { t } = useTranslation('home')
-    const { title, description, linksType, technologies, src } = project
-    const { selectedColor } = useThemeUncontrolled()
+    const { title, description, linksType, technologies, src, state } = project
+
+    const getUrlImage = useCallback(() => {
+        const link = linksType.find(e => e.name === 'browser')
+        if (!link) {
+            throw new Error('Invalid value')
+        }
+        return link.url
+    }, [linksType])
 
     return (
-        <Grid.Container gap={3} direction={direction}>
-            <Grid 
-                xs={12} 
-                sm={6} 
-                justify="center"
-                css={{
-                    "@xsMax": {
-                        px: 0
-                    }
-                }}
-            >
-                <Box
-                    css={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                    }}
-                >
-                    <Card
-                        css={{
-                            transition: ".3s",
-                            backgroundColor: 'transparent',
-                            filter: "drop-shadow(0px 2px 5px transparent)",
-                            width: "100%",
-                            "@smMax": {
-                                width: "75%",
-                            },
-                            "@xsMax": {
-                                width: "100%",
-                            },
-                            "&:hover": {
-                                filter: `drop-shadow(0px 2px 5px ${selectedColor})`,
-                            }
-                        }}
-                        isHoverable
-                    >
-                        <a href={linksType.find(e => e.name === 'browser')?.url || linksType.find(e => e.name === 'github')?.url || '#'} target="_blank" rel="noopener noreferrer">
+        <div className={`grid gap-4 grid-flow-row grid-cols-1 sm:grid-cols-2 mb-10`}>
+            <div className={`${direction === 'row' ? "order-row" : "order-row-reverse"}`}>
+                <div className="flex justify-center items-center h-full">
+                    <div className={`w-full bg-transparent sm:w-[80%]`}>
+                        <Link href={getUrlImage()} isExternal>
                             <Image
                                 src={src}
                                 width="100%"
                                 alt="Example project"
-                                objectFit="contain"
+                                style={{ objectFit: "contain" }}
                             />
-                        </a>
-                    </Card>
-                </Box>
-            </Grid>
-            <Grid 
-                xs={12} 
-                sm={6}
-                css={{
-                    "@xsMax": {
-                        px: 0
-                    }
-                }}
-            >
-                <Box css={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "$8"
-                }}>
-                    <Text
-                        css={{
-                            textTransform: "uppercase",
-                            fontSize: "$xs",
-                            color: "$primary",
-                            letterSpacing: "$normal",
-                            textAlign: direction === "row-reverse" ? "start" : "end",
-                            width: "100%",
-                            fontWeight: "$medium"
-                        }}>
+                        </Link>
+                    </div>
+                </div>
+            </div>
+            <div className={`${direction !== 'row' ? "order-row" : "order-row-reverse"}`}>
+                <div className="flex flex-col gap-4" style={{ textAlign: direction === "row-reverse" ? "start" : "end" }}>
+                    <p className="uppercase text-xs text-primary tracking-normal w-full font-medium">
                         {t('projects.detail')}
-                    </Text>
-                    <Text
-                        css={{
-                            textGradient: "45deg, #02AABD -20%, #00CDAC 50%",
-                            fontWeight: "$bold",
-                            textAlign: direction === "row-reverse" ? "start" : "end",
-                            width: "100%",
-                            fontSize: 28,
-                            lineHeight: "40px",
-                            "@xsMax": {
-                                fontSize: 24,
-                                lineHeight: "32px",
-                            }
-                        }}
+                    </p>
+
+                    <div className="flex flex-wrap md:flex-nowrap justify-between items-center gap-4"
+                        style={{ flexDirection: direction !== "row" ? "row" : "row-reverse" }}
                     >
-                        {title}
-                    </Text>
+                        <h4
+                            className="text-2xl text-start text-gradient font-bold tracking-tighter w-full sm:text-[28px] sm:leading-[32px]"
+                            style={{ textAlign: direction === "row-reverse" ? "start" : "end" }}
+                            >
+                            {title}
+                        </h4>
 
-                    <Description textAlign={direction === "row-reverse" ? "start" : "end"} size={14} text={description} />
+                        <div className="w-full" style={{ display: !state ? "flex" : "none" }}>
+                            <Chip color="success" variant="dot">{ t('projects.textState') }</Chip>
+                        </div>
+                    </div>
 
-                    <Box css={{ display: "flex", justifyContent: direction === "row-reverse" ? "start" : "end", gap: "$5", flexWrap: "wrap" }}>
+                    <Description size={14} text={description} textAlign={direction === "row-reverse" ? "text-start" : "text-end"} />
+                    <div
+                        className="flex gap-2 flex-wrap"
+                        style={{ flexDirection: direction !== "row" ? "row" : "row-reverse" }}
+                    >
                         {
                             technologies.map(tech => (
-                                <Text key={tech} size={12} color="$primary">{tech}</Text>
+                                <p key={tech} className="text-xs text-primary">{tech}</p>
                             ))
                         }
-                    </Box>
+                    </div>
 
-                    <Box css={{ display: "flex", justifyContent: direction === "row-reverse" ? "start" : "end", alignItems: "center", gap: "$5" }}>
+                    <div
+                        className="flex items-center gap-5"
+                        style={{ flexDirection: direction !== "row" ? "row" : "row-reverse" }}
+                    >
                         {
                             linksType.map(({ name, url }) => {
                                 switch (name) {
                                     case 'github':
-                                        return <GitHubSVG key={name} />
+                                        return (
+                                            <Link key={name} href={url} isExternal>
+                                                <GitHubSVG />
+                                            </Link>
+                                        )
                                     case 'browser':
                                         return (
-                                            <Link key={name} href={url} target="_blank" rel="noopener noreferrer">
+                                            <Link key={name} href={url} isExternal>
                                                 <OpenSVG />
                                             </Link>
                                         )
@@ -134,10 +95,9 @@ export const ProjectCard: FC<Props> = ({ direction = "row", project }) => {
                                 }
                             })
                         }
-                    </Box>
-                </Box>
-            </Grid>
-
-        </Grid.Container>
+                    </div>
+                </div>
+            </div>
+        </div>
     )
 }
