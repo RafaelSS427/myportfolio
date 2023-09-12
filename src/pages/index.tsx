@@ -1,5 +1,5 @@
 
-import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
+import { GetStaticProps, NextPage } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { MainLayout } from '@/components/layout'
 import { About, Contact, Hero, Projects } from '@/screens'

@@ -3,7 +3,7 @@ import { inter } from '@/font/inter'
 
 export default function Document() {
   return (
-    <Html lang="en" className={ inter.variable }>
+    <Html className={ inter.variable }>
       <Head />
       <body>
         <Main />

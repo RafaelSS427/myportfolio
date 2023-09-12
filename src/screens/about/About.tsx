@@ -18,7 +18,7 @@ export const About = () => {
     const itemsAbout: IItemAbout[] = t('about.items', { returnObjects: true })
 
     return (
-        <div id="about" className="min-h-screen">
+        <section id="about" className="min-h-screen">
             <SectionTitle title={t('about.title')} titleNumber={2} />
 
             <div className="flex flex-col gap-5">
@@ -87,6 +87,6 @@ export const About = () => {
                 )
             }
 
-        </div>
+        </section>
     )
 }

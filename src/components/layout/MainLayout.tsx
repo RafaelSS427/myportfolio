@@ -29,6 +29,23 @@ export const MainLayout: FC<Props> = ({ children, title, description }) => {
                         content: "rafael sequeira sandoval, full stack developer, back-end developer, front-end developer, javascript developer, react developer"
                     }
                 ]}
+                additionalLinkTags={[
+                    {
+                        rel: "alternate",
+                        hrefLang: "es",
+                        href: "https://rafael-sequeira-sandoval.dev/es"
+                    },
+                    {
+                        rel: "alternate",
+                        hrefLang: "en",
+                        href: "https://rafael-sequeira-sandoval.dev"
+                    },
+                    {
+                        rel: "alternate",
+                        hrefLang: "x-default",
+                        href: "https://rafael-sequeira-sandoval.dev"
+                    },
+                ]}
                 openGraph={{
                     url: "https://rafael-sequeira-sandoval.dev",
                     title: title,

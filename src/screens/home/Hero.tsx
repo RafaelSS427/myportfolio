@@ -44,7 +44,7 @@ export const Hero = () => {
     const { t } = useTranslation('home')
 
     return (
-        <div className="h-[calc(100vh-80px*3)] md:h-[calc(100vh-80px*2)] flex items-center">
+        <section className="h-[calc(100vh-80px*3)] md:h-[calc(100vh-80px*2)] flex items-center">
             <div style={{ display: isMounted ? "block" : "none" }}>
                 <TransitionGroup component={null}>
                     {
@@ -74,6 +74,6 @@ export const Hero = () => {
                     }
                 </TransitionGroup>
             </div>
-        </div>
+        </section>
     )
 }

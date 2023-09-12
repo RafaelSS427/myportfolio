@@ -4,9 +4,6 @@ module.exports = {
         locales: ['en', 'es'],
         localeDetection: true,
     },
-    allbackLng: {
-        default: ['en']
-    },
-    ns: ['home', 'projects'],
+    ns: ['home'],
     defaultNS: 'home'
 }

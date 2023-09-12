@@ -28,7 +28,7 @@ const ItemAbout:FC<Props> = ({ itemAbout, itemIndex }) => {
                     />
                 </div>
 
-                <h4 className="text-primary mb-0" style={{ textAlign: isReverse ? "end" : "start" }}>{title}</h4>
+                <h5 className="text-primary mb-0" style={{ textAlign: isReverse ? "end" : "start" }}>{title}</h5>
             </div>
             <div className="flex" style={{ justifyContent: isReverse ? "end" : "start" }}>
                 <div

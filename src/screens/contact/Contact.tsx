@@ -6,7 +6,7 @@ export const Contact = () => {
   const { t } = useTranslation('home')
 
   return (
-    <div id="contact" className="min-h-screen flex flex-col justify-evenly">
+    <section id="contact" className="min-h-screen flex flex-col justify-evenly">
       <div>
         <SectionTitle title={t('contact.title')} titleNumber={3} />
         <div className="grid place-content-center">
@@ -25,6 +25,6 @@ export const Contact = () => {
         </div>
       </div>
 
-    </div>
+    </section>
   )
 }

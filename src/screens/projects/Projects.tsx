@@ -11,7 +11,7 @@ export const Projects = () => {
     const projectsS: Project[] = t('projects.secondary', { returnObjects: true })
 
     return (
-        <div id="projects">
+        <section id="projects">
             <SectionTitle title={t('projects.title')} />
 
             {
@@ -33,7 +33,7 @@ export const Projects = () => {
                 }
             </div>
 
-        </div>
+        </section>
     )
 }
 
