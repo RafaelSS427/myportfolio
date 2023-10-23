@@ -30,7 +30,8 @@
     },
     "about": {
         "title": "About me",
-        "subtitle": "Technologies I use",
+        "subtitle": "My primary stack",
+        "detail": "Additional technologies that are part of my experience",
         "items": [
             {
                 "title": "What type of work do I do?",
@@ -103,6 +104,29 @@
                 ]
             },
             {
+                "title": "EN-AI",
+                "description": "EN-AI is a website that uses artificial intelligence to help users with basic English language questions.",
+                "src": "/img/en-ai.webp",
+                "state": true,
+                "technologies": [
+                    "Nextjs",
+                    "NextUI",
+                    "TailwindCSS",
+                    "usellm",
+                    "zustand"
+                ],
+                "linksType": [
+                    {
+                        "name": "github",
+                        "url": "https://github.com/RafaelSS427/en-ai"
+                    },
+                    {
+                        "name": "browser",
+                        "url": "https://en-ai.vercel.app/"
+                    }
+                ]
+            },
+            {
                 "title": "FutsalaSC",
                 "description": "FutsalaSC is a student initiative, the purpose of the website is to share news related to sports. It features an administrative system for creating, updating, and deleting news.",
                 "src": "/img/futsala-sc.webp",
@@ -126,6 +150,44 @@
         ],
         "secondary": [
             {
+                "title": "rest-countries-api",
+                "description": "Website that consumes a third party api to show the information of the countries of the planet. You can search, filter and query.",
+                "technologies": [
+                    "Next.js",
+                    "NextUI",
+                    "TailwindCSS"
+                ],
+                "linksType": [
+                    {
+                        "name": "github",
+                        "url": "https://github.com/RafaelSS427/rest-countries-api"
+                    },
+                    {
+                        "name": "browser",
+                        "url": "https://rafaelss427.github.io/rest-countries-api"
+                    }
+                ]
+            },
+            {
+                "title": "chat-illustration",
+                "description": "Web page that displays information through a chat from a mobile device.",
+                "technologies": [
+                    "Next.js",
+                    "TailwindCSS",
+                    "framer-motion"
+                ],
+                "linksType": [
+                    {
+                        "name": "github",
+                        "url": "https://github.com/RafaelSS427/chat-illustration"
+                    },
+                    {
+                        "name": "browser",
+                        "url": "https://rafaelss427.github.io/chat-illustration"
+                    }
+                ]   
+            },
+            {
                 "title": "age-calculator-app",
                 "description": "On this web site you can know your age in years, months and days given a date of birth.",
                 "technologies": [
@@ -141,36 +203,6 @@
                     {
                         "name": "browser",
                         "url": "https://rafaelss427.github.io/age-calculator-app/"
-                    }
-                ]
-            },
-            {
-                "title": "pokemon-app-next",
-                "description": "With this web site I was able to understand the fundamentals of Next.js thanks to the course by Professor Fernando Herrera.",
-                "technologies": [
-                    "Next.js",
-                    "NextUI",
-                    "TypeScript"
-                ],
-                "linksType": [
-                    {
-                        "name": "github",
-                        "url": "https://github.com/RafaelSS427/pokemon-app-next"
-                    }
-                ]
-            },
-            {
-                "title": "Botanica_web",
-                "description": "One of my first web projects from university that I was proud of.",
-                "technologies": [
-                    "Express",
-                    "Handlebars",
-                    "Passport"
-                ],
-                "linksType": [
-                    {
-                        "name": "github",
-                        "url": "https://github.com/RafaelSS427/Botanica_web"
                     }
                 ]
             }

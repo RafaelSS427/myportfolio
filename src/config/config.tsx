@@ -12,6 +12,7 @@ import {
     NodejsSVG, 
     PrismaSVG, 
     ReactSVG, 
+    TailwindSVG, 
     TypescriptSVG 
 } from '@/components'
 
@@ -19,62 +20,76 @@ export const config = {
     skills: {
         main: [
             {
-                name: "Javascript",
-                logo: <JavascriptSVG />
-            },
-            {
                 name: "Nextjs",
                 logo: <NextSVG />
-            },
-            {
-                name: "React",
-                logo: <ReactSVG />
             },
             {
                 name: "Typescript",
                 logo: <TypescriptSVG />
             },
+            {
+                name: "Figma",
+                logo: <FigmaSVG size="60px" />
+            },
+            {
+                name: "Prisma",
+                logo: <PrismaSVG size="60px" />
+            },
+            {
+                name: "TailwindCSS",
+                logo: <TailwindSVG size="60px" />
+            },
+            // {
+            //     name: "React",
+            //     logo: <ReactSVG />
+            // },
+            
+            // {
+            //     name: "Javascript",
+            //     logo: <JavascriptSVG />
+            // },
         ],
         secondary: [
             {
                 name: "HTML",
-                logo: <HtmlSVG />
+                logo: <HtmlSVG size="44px" />
             },
             {
                 name: "CSS",
-                logo: <CssSVG />
+                logo: <CssSVG size="44px" />
+            },
+            {
+                name: "Javascript",
+                logo: <JavascriptSVG size="44px" />
+            },
+            
+            {
+                name: "React",
+                logo: <ReactSVG size="44px" />
             },
             {
                 name: "NodeJS",
-                logo: <NodejsSVG />
+                logo: <NodejsSVG size="44px" />
             },
             {
                 name: "Git",
-                logo: <GitSVG />
-            },
-            {
-                name: "Figma",
-                logo: <FigmaSVG />
+                logo: <GitSVG size="44px" />
             },
             {
                 name: "Docker",
-                logo: <DockerSVG />
+                logo: <DockerSVG size="44px" />
             },
             {
                 name: "C#",
-                logo: <CsharpSVG />
+                logo: <CsharpSVG size="44px"/>
             },
             {
                 name: "MySQL",
-                logo: <MySqlSVG />
-            },
-            {
-                name: "Prisma",
-                logo: <PrismaSVG />
+                logo: <MySqlSVG size="44px"/>
             },
             {
                 name: "ASP.NET",
-                logo: <AspNetSVG />
+                logo: <AspNetSVG size="44px" />
             },
         ]
     },

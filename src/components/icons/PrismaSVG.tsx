@@ -10,8 +10,8 @@ export const PrismaSVG = ({ size = '40px' }: Props) => {
 
     return (
         <svg
-            width={size}
-            height={size}
+            // width={size}
+            // height={size}
             viewBox="-27 0 310 310"
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"

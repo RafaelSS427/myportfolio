@@ -26,8 +26,9 @@
         "cv": "Descargar CV"
     },
     "about": {
-        "title": "Acerca de mí",
-        "subtitle": "Tecnologías que utilizo",
+        "title": "Sobre mí",
+        "subtitle": "Mi stack principal",
+        "detail": "Tecnologías adicionales que forman parte de mi experiencia",
         "items": [
             {
                 "title": "¿Qué tipo de trabajo hago?",
@@ -63,7 +64,7 @@
                 "src": "/img/academia-eleganzza.webp",
                 "state": true,
                 "technologies": [
-                    "Nextjs",
+                    "Next.js",
                     "Material-UI",
                     "Typescript",
                     "Prisma",
@@ -84,7 +85,7 @@
                 "src": "/img/flor-playa-negra.webp",
                 "state": true,
                 "technologies": [
-                    "Nextjs",
+                    "Next.js",
                     "Material-UI",
                     "Typescript",
                     "Mapbox",
@@ -100,12 +101,35 @@
                 ]
             },
             {
+                "title": "EN-AI",
+                "description": "EN-AI es un sitio web que utiliza la inteligencia artifial para ayudar a los usuarios con dudas básicas del idioma inglés",
+                "src": "/img/en-ai.webp",
+                "state": true,
+                "technologies": [
+                    "Next.js",
+                    "NextUI",
+                    "TailwindCSS",
+                    "usellm",
+                    "zustand"
+                ],
+                "linksType": [
+                    {
+                        "name": "github",
+                        "url": "https://github.com/RafaelSS427/en-ai"
+                    },
+                    {
+                        "name": "browser",
+                        "url": "https://en-ai.vercel.app/"
+                    }
+                ]
+            },
+            {
                 "title": "FutsalaSC",
                 "description": "FutsalaSC es una iniciativa estudiantil, el objetivo de la página es compartir noticias relacionadas al deporte. Cuenta con un sistema administrativo para crear, actualizar y borrar noticias.",
                 "src": "/img/futsala-sc.webp",
                 "state": false,
                 "technologies": [
-                    "Nextjs",
+                    "Next.js",
                     "Material-UI",
                     "Typescript"
                 ],
@@ -123,6 +147,44 @@
         ],
         "secondary": [
             {
+                "title": "rest-countries-api",
+                "description": "Sitio web que consume una api de terceros para mostrar la información de los países del planeta. Puedes buscar, filtrar y consultar.",
+                "technologies": [
+                    "Next.js",
+                    "NextUI",
+                    "TailwindCSS"
+                ],
+                "linksType": [
+                    {
+                        "name": "github",
+                        "url": "https://github.com/RafaelSS427/rest-countries-api"
+                    },
+                    {
+                        "name": "browser",
+                        "url": "https://rafaelss427.github.io/rest-countries-api"
+                    }
+                ]
+            },
+            {
+                "title": "chat-illustration",
+                "description": "Página web que muestra información mediante un chat de un dispositivo movil.",
+                "technologies": [
+                    "Next.js",
+                    "TailwindCSS",
+                    "framer-motion"
+                ],
+                "linksType": [
+                    {
+                        "name": "github",
+                        "url": "https://github.com/RafaelSS427/chat-illustration"
+                    },
+                    {
+                        "name": "browser",
+                        "url": "https://rafaelss427.github.io/chat-illustration"
+                    }
+                ]   
+            },
+            {
                 "title": "age-calculator-app",
                 "description": "En esta página web podrás saber la edad en años, meses y días dada una fecha de nacimento.",
                 "technologies": [
@@ -138,36 +200,6 @@
                     {
                         "name": "browser",
                         "url": "https://rafaelss427.github.io/age-calculator-app/"
-                    }
-                ]
-            },
-            {
-                "title": "pokemon-app-next",
-                "description": "Con esta página fui capaz de entender los fundamentos de Next.js gracias al curso del Profesor Fernando Herrera.",
-                "technologies": [
-                    "Next.js",
-                    "NextUI",
-                    "TypeScript"
-                ],
-                "linksType": [
-                    {
-                        "name": "github",
-                        "url": "https://github.com/RafaelSS427/pokemon-app-next"
-                    }
-                ]
-            },
-            {
-                "title": "Botanica_web",
-                "description": "Unos de mis primeros proyectos web de la universidad del cual me sentí orgulloso.",
-                "technologies": [
-                    "express",
-                    "handlebars",
-                    "passport"
-                ],
-                "linksType": [
-                    {
-                        "name": "github",
-                        "url": "https://github.com/RafaelSS427/Botanica_web"
                     }
                 ]
             }

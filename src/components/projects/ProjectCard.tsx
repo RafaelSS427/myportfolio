@@ -1,4 +1,5 @@
 import { FC, useCallback } from 'react'
+import Balancer from 'react-wrap-balancer'
 import { useTranslation } from 'next-i18next'
 import { Link, Chip, Image } from '@nextui-org/react'
 import { GitHubSVG, OpenSVG } from '../icons'
@@ -50,15 +51,17 @@ export const ProjectCard: FC<Props> = ({ direction = "row", project }) => {
                             className="text-2xl text-start text-gradient font-bold tracking-tighter w-full sm:text-[28px] sm:leading-[32px]"
                             style={{ textAlign: direction === "row-reverse" ? "start" : "end" }}
                             >
-                            {title}
+                                <Balancer>
+                                    {title}
+                                </Balancer>
                         </h4>
 
-                        <div className="w-full justify-end sm:justify-start" style={{ display: !state ? "flex" : "none" }}>
+                        <div className={`w-full justify-end ${direction === 'row' ? "sm:justify-start" : "sm:justify-end"}`} style={{ display: !state ? "flex" : "none" }}>
                             <Chip color="success" variant="dot">{ t('projects.textState') }</Chip>
                         </div>
                     </div>
 
-                    <Description size={14} text={description} textAlign={direction === "row-reverse" ? "text-start" : "text-end"} />
+                    <Description size={14} text={description} textAlign={direction === "row-reverse" ? "text-start" : "text-end"} isBalancer />
                     <div
                         className="flex gap-2 flex-wrap"
                         style={{ flexDirection: direction !== "row" ? "row" : "row-reverse" }}

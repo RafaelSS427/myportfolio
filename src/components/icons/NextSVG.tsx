@@ -4,14 +4,14 @@ interface Props {
     size?: string;
 }
 
-export const NextSVG = ({ size = "80px" }: Props) => {
+export const NextSVG = ({ size = "60px" }: Props) => {
 
     const [, colorOne] = useThemeUncontrolled().colorsContrast
 
-    return (
+    return (    
         <svg
-            width={size}
-            height={size}
+            // width={size}
+            // height={size}
             viewBox="0 -101.5 512 512"
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"

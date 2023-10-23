@@ -3,7 +3,7 @@ import { Link } from '@nextui-org/react'
 // import { useBookStore } from '@/store'
 import { TransitionElement } from '../shared'
 import { GitHubSVG } from '../icons/GitHubSVG'
-import { LinkedInSVG } from '../icons'
+import { FrontMentorSVG, LinkedInSVG } from '../icons'
 import { useIsMounted } from '@/hooks'
 import { config } from '@/config'
 import { capitalize } from '@/utils'
@@ -24,6 +24,11 @@ export const SocialMedia = () => {
         <TransitionElement isMounted={isMounted} classNames='fadeleft' timeout={2000}>
           <Link href={config.socialMedia.linkedin} isExternal>
             <LinkedInSVG />
+          </Link>
+        </TransitionElement>
+        <TransitionElement isMounted={isMounted} classNames='fadeleft' timeout={2000}>
+          <Link href={config.socialMedia.frontentmentor} isExternal>
+            <FrontMentorSVG />
           </Link>
         </TransitionElement>
       </div>

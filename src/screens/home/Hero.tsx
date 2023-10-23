@@ -6,6 +6,7 @@ import { ButtonContact, ButtonDownload } from '@/components'
 import { TextName } from '@/components/home'
 import { useIsMounted } from '@/hooks'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
+import Balancer from 'react-wrap-balancer'
 
 interface ChildrenProps {
     text: string
@@ -24,17 +25,17 @@ const Im = ({ text }: ChildrenProps) => (
 )
 
 const Description = ({ text }: ChildrenProps) => (
-    <p className="text-base mb-5 tracking-tight sm:text-xl">
-        {text}
+    <p className="text-base mb-5 tracking-tight sm:text-xl max-w-2xl">
+        <Balancer>
+            {text}
+        </Balancer>
     </p>
 )
 
 const FullName = () => {
     return (
-        <div className="flex gap-x-2.5 flex-wrap mb-2.5" >
-            <TextName text='Rafael' />
-            <TextName text='Sequeira' />
-            <TextName text='Sandoval' />
+        <div className="flex gap-x-3 flex-wrap mb-2.5" >
+            <TextName text='Rafael Sequeira Sandoval' />
         </div>
     )
 }

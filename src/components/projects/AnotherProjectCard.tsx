@@ -2,6 +2,7 @@ import { FC } from 'react'
 import { Card, CardBody, CardHeader, CardFooter, Link } from '@nextui-org/react'
 import { CarpterSVG, GitHubSVG, OpenSVG } from '../icons'
 import { Project } from '@/interfaces'
+import Balancer from 'react-wrap-balancer'
 
 interface Props {
     project: Omit<Project, 'src' | 'state'>
@@ -44,7 +45,11 @@ export const AnotherProjectCard: FC<Props> = ({ project }) => {
             </CardHeader>
             <CardBody className="py-2">
                 <h4 className="text-lg mb-2 capitalize font-semibold">{title}</h4>
-                <p className="text-small">{description}</p>
+                <p className="text-small">
+                    {/* <Balancer> */}
+                        {description}
+                    {/* </Balancer> */}
+                </p>
             </CardBody>
             <CardFooter className="px-5">
                 <div className="flex gap-5">
