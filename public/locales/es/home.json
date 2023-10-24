@@ -102,7 +102,7 @@
             },
             {
                 "title": "EN-AI",
-                "description": "EN-AI es un sitio web que utiliza la inteligencia artifial para ayudar a los usuarios con dudas básicas del idioma inglés",
+                "description": "EN-AI es un sitio web que utiliza inteligencia artifial para ayudar a los usuarios con dudas básicas del idioma inglés.",
                 "src": "/img/en-ai.webp",
                 "state": true,
                 "technologies": [
