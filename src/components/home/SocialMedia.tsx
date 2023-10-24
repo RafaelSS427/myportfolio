@@ -13,7 +13,7 @@ export const SocialMedia = () => {
   const { isMounted } = useIsMounted(100)
 
   return (
-    <div className="container mx-auto max-w-screen-2xl absolute lg:fixed inset-x-0 flex flex-row-reverse lg:flex-row justify-between bottom-0 mb-10 z-0">
+    <div className="container mx-auto max-w-screen-2xl absolute xl:fixed inset-x-0 flex flex-row-reverse xl:flex-row justify-between bottom-0 mb-10 z-10 xl:z-0">
 
       <div className="flex sm:flex-col w-[60px] items-center justify-end gap-5">
         <TransitionElement isMounted={isMounted} classNames='fadeleft' timeout={2000}>
@@ -36,7 +36,7 @@ export const SocialMedia = () => {
       <div>
         <TransitionElement isMounted={isMounted} classNames='faderight' timeout={2000}>
           <Link
-            className="hidden lg:block [writing-mode:vertical-lr]"
+            className="hidden xl:block [writing-mode:vertical-lr]"
             color="foreground"
             href={`mailto:${config.contact}`}
             isExternal

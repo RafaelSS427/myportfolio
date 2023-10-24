@@ -74,13 +74,13 @@ export const MainLayout: FC<Props> = ({ children, title, description }) => {
                     <>
                         <NavbarApp />
 
-                        <div className="container py-2 mx-auto z-10 relative max-w-screen-lg">
+                        <div className="container py-2 z-10 mx-auto relative max-w-screen-lg">
                             {children}
+                        <Footer />
                         </div>
 
                         <SocialMedia />
 
-                        <Footer />
                     </>
                 )
             }
