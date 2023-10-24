@@ -4,7 +4,7 @@ import { Link } from '@nextui-org/react'
 export const Footer = () => {
 
   return (
-    <footer className="relative bg-red-300">
+    <footer className="relative">
       <div className="flex flex-col gap-2 justify-center items-center p-5">
         <p className="text-sm sm:text-base">
           <Trans
