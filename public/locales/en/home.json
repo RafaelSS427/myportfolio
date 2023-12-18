@@ -125,27 +125,6 @@
                         "url": "https://en-ai.vercel.app/"
                     }
                 ]
-            },
-            {
-                "title": "FutsalaSC",
-                "description": "FutsalaSC is a student initiative, the purpose of the website is to share news related to sports. It features an administrative system for creating, updating, and deleting news.",
-                "src": "/img/futsala-sc.webp",
-                "state": false,
-                "technologies": [
-                    "Nextjs",
-                    "Material-UI",
-                    "Typescript"
-                ],
-                "linksType": [
-                    {
-                        "name": "github",
-                        "url": "https://github.com/RafaelSS427/futsala-sc"
-                    },
-                    {
-                        "name": "browser",
-                        "url": "https://futsala-sc.vercel.app"
-                    }
-                ]
             }
         ],
         "secondary": [

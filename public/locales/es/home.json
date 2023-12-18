@@ -122,27 +122,6 @@
                         "url": "https://en-ai.vercel.app/"
                     }
                 ]
-            },
-            {
-                "title": "FutsalaSC",
-                "description": "FutsalaSC es una iniciativa estudiantil, el objetivo de la página es compartir noticias relacionadas al deporte. Cuenta con un sistema administrativo para crear, actualizar y borrar noticias.",
-                "src": "/img/futsala-sc.webp",
-                "state": false,
-                "technologies": [
-                    "Next.js",
-                    "Material-UI",
-                    "Typescript"
-                ],
-                "linksType": [
-                    {
-                        "name": "github",
-                        "url": "https://github.com/RafaelSS427/futsala-sc"
-                    },
-                    {
-                        "name": "browser",
-                        "url": "https://futsala-sc.vercel.app"
-                    }
-                ]
             }
         ],
         "secondary": [
